@@ -373,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d810cca7c3968f4e86c3a34fadcc1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPawn: {fileID: 0}
+  _buttonText: {fileID: 0}
 --- !u!1 &310931597
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Dice
+  m_text: Roll Dice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1784,6 +1786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a01c191703b924aaf1847212687e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cellsTab: []
 --- !u!1 &1278886362
 GameObject:
   m_ObjectHideFlags: 0
