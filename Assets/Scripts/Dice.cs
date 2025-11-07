@@ -7,19 +7,18 @@ public class Dice : MonoBehaviour
     [SerializeField] private Pawn _playerPawn;
     private bool _isRolling;
     [SerializeField] private TextMeshProUGUI _buttonText;
+    private int _value;
 
     private void RollDice()
     {
-        int value = Random.Range(1, 7);
-        _buttonText.text = value.ToString();
-        Debug.Log($"Le dé a fait {value}");
-        _playerPawn.TryMoving(value);
+        Debug.Log($"Le dé a fait {_value}");
+        _playerPawn.TryMoving(_value);
     }
 
     private void IsRolling()
     {
-        int value = Random.Range(1, 7);
-        _buttonText.text = value.ToString();
+        _value = Random.Range(1, 7);
+        _buttonText.text = _value.ToString();
     }
 
     public void DrawDice()
