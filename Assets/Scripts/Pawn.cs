@@ -22,5 +22,12 @@ public class Pawn : MonoBehaviour
     {
         _playerDatas._cellNumber = _board.GetNextCellToMove(_playerDatas._cellNumber + value);
         MoveToCell ();
+        ActivateCell();
+
+    }
+
+    private void ActivateCell()
+    {
+        _board.GetCellByNumber(_playerDatas._cellNumber).OnCellActivate(this);
     }
 }
