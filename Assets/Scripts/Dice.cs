@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 
 public class Dice : MonoBehaviour
 {
@@ -8,34 +8,36 @@ public class Dice : MonoBehaviour
     private bool _isRolling;
     [SerializeField] private TextMeshProUGUI _buttonText;
 
-    public void RollDice()
+    private void RollDice()
     {
         int value = Random.Range(1, 7);
+        _buttonText.text = value.ToString();
         Debug.Log($"Le dé a fait {value}");
         _playerPawn.TryMoving(value);
     }
 
-    public void IsRolling()
+    private void IsRolling()
     {
         int value = Random.Range(1, 7);
+        _buttonText.text = value.ToString();
     }
 
     public void DrawDice()
     {
-        StartCoroutine(SetBoolForSeconds(2f));
-        RollDice();
+        StartCoroutine(Rolling(2f));
     }
 
-    private IEnumerator SetBoolForSeconds(float duration)
+    IEnumerator Rolling(float duration)
     {
         _isRolling = true;
         yield return new WaitForSeconds(duration);
         _isRolling = false;
+        RollDice();
     }
 
     private void Update()
     {
-        while (_isRolling) 
+        if (_isRolling) 
         { 
             IsRolling();
         }
