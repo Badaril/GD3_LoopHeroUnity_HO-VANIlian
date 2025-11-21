@@ -1,6 +1,9 @@
 # GD3_LoopHeroUnity_HO-VANIlian
 Nature Morte – Unity Engine 6000.0.50f1
 
+# Important
+J'ai découvert aujourd'hui (21/11/25) qu'on pouvait exporter un level Unreal en FBX. Je ne sais pas si je pouvais utiliser cette technique donc j'ai fait une nouvelle scene utilisant cette technique. Tout se trouve dans ce dossier "Assets/NatureMorte/NatureMorteByExport"
+
 # Consigne
 Ce devoir à pour objectif d'évaluer votre compréhension des matières, lumières et post-process. Je vous demande de réaliser deux natures mortes, une dans chaque moteur de jeu. Elles devront contenir les éléments suivants :
 - une matière opaque non-métallique.
