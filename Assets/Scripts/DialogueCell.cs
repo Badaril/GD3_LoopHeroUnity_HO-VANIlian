@@ -7,15 +7,9 @@ public class DialogueCell : Cell
 
     }
 
-    public override void OnCellUpdate(Pawn playerPawn)
-    {
+    //public override void OnCellUpdate(Pawn playerPawn) {  }
 
-    }
-
-    public override void OnCellDeactivate(Pawn playerPawn)
-    {
-        
-    }
+    //public override void OnCellDeactivate(Pawn playerPawn)  {  }
 
     
 }

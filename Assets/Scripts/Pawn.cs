@@ -9,6 +9,7 @@ public class Pawn : MonoBehaviour
     private void Start()
     {
         MoveToCell();
+        ActivateCell();
     }
 
     private void MoveToCell ()
