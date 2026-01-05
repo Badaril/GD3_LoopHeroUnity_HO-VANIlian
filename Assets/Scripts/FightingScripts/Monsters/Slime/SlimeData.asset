@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d951d6c955c332a408fa738e7557989f, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 0116a75051833ad4aacd9084ccee2343, type: 3}
+  m_Name: SlimeData
   m_EditorClassIdentifier: 
-  _cellNumber: 0
-  _health: 20
-  _attack: 3
-  _stamina: 20
+  _health: 9
+  _attack: 1
+  _attackSpeed: 1

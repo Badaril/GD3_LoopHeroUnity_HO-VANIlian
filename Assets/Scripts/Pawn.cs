@@ -5,9 +5,12 @@ public class Pawn : MonoBehaviour
 {
     [SerializeField] private Board _board;
     [SerializeField] private PlayerDatas _playerDatas;
+    [SerializeField] private DamageComponent _damageComponent;
 
     private void Start()
     {
+        _damageComponent.SetHealth(_playerDatas._health);
+        _damageComponent.SetAttack(_playerDatas._attack);
         MoveToCell();
         ActivateCell();
     }
@@ -30,5 +33,28 @@ public class Pawn : MonoBehaviour
     private void ActivateCell()
     {
         _board.GetCellByNumber(_playerDatas._cellNumber).OnCellActivate(this);
+    }
+
+    public float GetStamina()
+    {
+        return _playerDatas._stamina;
+    }
+
+    public void Attack()
+    {
+        _playerDatas._stamina += 10;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        { 
+            Attack();
+        }
+    }
+
+    public void Death()
+    {
+        
     }
 }

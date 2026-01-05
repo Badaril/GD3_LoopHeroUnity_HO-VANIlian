@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class UIDialogueController : MonoBehaviour
@@ -7,7 +8,7 @@ public class UIDialogueController : MonoBehaviour
     [SerializeField] private GameObject _dialoguePanel;
     [SerializeField] private TMP_Text _characterName;
     [SerializeField] private TMP_Text _dialogueText;
-    [SerializeField] private GameObject _rollDiceButton;
+    [SerializeField] private GameObject[] _diceButtons;
 
 
     public void StartDialogue(DialogueComponent dialogueComponent)
@@ -15,7 +16,7 @@ public class UIDialogueController : MonoBehaviour
         _dialogueComponent = dialogueComponent;
         UpdateText();
         _dialoguePanel.SetActive(true);
-        _rollDiceButton.SetActive(false);
+        SetAllButtons(false);
     }
 
     public void UpdateText()
@@ -40,7 +41,15 @@ public class UIDialogueController : MonoBehaviour
     public void EndDialogue()
     {
         _dialoguePanel.SetActive(false);
-        _rollDiceButton.SetActive(true);
+        SetAllButtons(true);
         _dialogueComponent.ResetDialogue();
+    }
+
+    private void SetAllButtons(bool active)
+    {
+        for (int i = 0; i < _diceButtons.Length; i++)
+        {
+            _diceButtons[i].gameObject.SetActive(active);
+        }
     }
 }
