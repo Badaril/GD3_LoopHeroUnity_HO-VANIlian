@@ -5,12 +5,13 @@ using System.Collections;
 public class Monster : MonoBehaviour
 {
     [SerializeField] private MonsterDatas _monsterDatas;
-    [SerializeField] private DamageComponent _damageComponent;
-    private bool _isAttacking;
+    private DamageComponent _damageComponent;
+    public bool _isAttacking;
     
 
     private void Start()
     {
+        _damageComponent = this.GetComponent<DamageComponent>();
         _damageComponent.SetHealth(_monsterDatas._health);
         _damageComponent.SetAttack(_monsterDatas._attack);
     }
@@ -19,6 +20,7 @@ public class Monster : MonoBehaviour
     {
         if (_isAttacking)
         {
+            
             StartCoroutine(AttackCooldown(_monsterDatas._attackSpeed));
         }
         return _isAttacking;
@@ -26,13 +28,19 @@ public class Monster : MonoBehaviour
 
     IEnumerator AttackCooldown(float duration)
     {
-        _isAttacking = true;
-        yield return new WaitForSeconds(duration);
         _isAttacking = false;
+        yield return new WaitForSeconds(duration);
+        _isAttacking = true;
+        Attack();
     }
 
     public void Death()
     {
         this.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        //Debug.Log(_isAttacking);
     }
 }

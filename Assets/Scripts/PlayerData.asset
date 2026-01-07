@@ -15,4 +15,4 @@ MonoBehaviour:
   _cellNumber: 0
   _health: 20
   _attack: 3
-  _stamina: 20
+  _stamina: 0

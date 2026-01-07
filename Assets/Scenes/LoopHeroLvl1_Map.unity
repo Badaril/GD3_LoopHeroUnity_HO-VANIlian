@@ -416,11 +416,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 210290426}
         m_TargetAssemblyTypeName: FightController, Assembly-CSharp
-        m_MethodName: Test
-        m_Mode: 1
+        m_MethodName: CellAction
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1412645871156107997}
+          m_ObjectArgumentAssemblyTypeName: Pawn, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -1,22 +1,18 @@
 using UnityEngine;
+using System.Collections;
 
 public class DamageComponent : MonoBehaviour
 {
-    [SerializeField] private FightController _fightController;
+    public FightController _fightController;
     private float _health;
     private float _initialHealth;
     private float _attack;
-    private float _initialAttack;
-
-    void Start()
-    {
-        Debug.Log(_health);
-        Debug.Log(_attack);
-    }
+    //private float _initialAttack;
 
     public void SetHealth(float value)
     {
         _health = value;
+        _initialHealth = value;
     }
 
     public void SetAttack(float value)
@@ -43,8 +39,28 @@ public class DamageComponent : MonoBehaviour
         }
     }
 
+    public float GetHealth() 
+    {
+        return _health; 
+    }
+
+    /*public void InFight()
+    {
+        StartCoroutine(Fighting(1f));
+    }
+
+    IEnumerator Fighting(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    }*/
+
     private void Death()
     {
         _fightController.FightOver();
+    }
+
+    private void FixedUpdate()
+    {
+        Debug.Log(_health);
     }
 }

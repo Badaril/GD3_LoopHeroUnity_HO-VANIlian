@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2443763566940715167}
   - component: {fileID: 7322945676524129125}
+  - component: {fileID: 1229474138576254617}
   m_Layer: 0
   m_Name: === PlayerPawn ===
   m_TagString: Player
@@ -47,8 +48,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _board: {fileID: 0}
   _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
-  _damageComponent: {fileID: 0}
-  _stamina: 0
+  _fightController: {fileID: 0}
+--- !u!114 &1229474138576254617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844612327733622469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfa8d81d3f54c54688ccf332fb313d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fightController: {fileID: 0}
 --- !u!1 &8408157229774490237
 GameObject:
   m_ObjectHideFlags: 0

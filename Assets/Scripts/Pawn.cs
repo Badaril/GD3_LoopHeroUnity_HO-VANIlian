@@ -1,14 +1,17 @@
 using UnityEditor.UI;
 using UnityEngine;
+using System.Collections;
 
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private Board _board;
     [SerializeField] private PlayerDatas _playerDatas;
-    [SerializeField] private DamageComponent _damageComponent;
+    private DamageComponent _damageComponent;
+    //private bool _isAttacking;
 
     private void Start()
     {
+        _damageComponent = this.GetComponent<DamageComponent>();
         _damageComponent.SetHealth(_playerDatas._health);
         _damageComponent.SetAttack(_playerDatas._attack);
         MoveToCell();
@@ -40,17 +43,37 @@ public class Pawn : MonoBehaviour
         return _playerDatas._stamina;
     }
 
+    public void SetStamina(float value)
+    {
+        _playerDatas._stamina = value;
+    }
+
     public void Attack()
     {
-        _playerDatas._stamina += 10;
+        if (Input.GetMouseButtonDown(0))
+        {
+            _playerDatas._stamina += 5;
+            
+        }
+        _playerDatas._stamina -= Time.deltaTime*10f;
+        _playerDatas._stamina = Mathf.Clamp(_playerDatas._stamina, 0, 100);
+        Debug.Log(_playerDatas._stamina);
+        //StartCoroutine(DecreaseStamina(1f));
     }
+
+    /*IEnumerator DecreaseStamina(float duration)
+    {
+        _playerDatas._stamina -= 0.1f;
+        yield return new WaitForSeconds(duration);
+    }*/
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+        /*if (Input.GetMouseButtonDown(0) & (_fightController.GetFightState()))
         { 
             Attack();
-        }
+        }*/
     }
 
     public void Death()
