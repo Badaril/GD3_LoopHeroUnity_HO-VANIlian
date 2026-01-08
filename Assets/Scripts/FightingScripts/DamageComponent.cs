@@ -4,56 +4,64 @@ using System.Collections;
 public class DamageComponent : MonoBehaviour
 {
     public FightController _fightController;
-    private float _health;
-    private float _initialHealth;
-    private float _attack;
-    //private float _initialAttack;
-
-    public void SetHealth(float value)
-    {
-        _health = value;
-        _initialHealth = value;
-    }
-
-    public void SetAttack(float value)
-    {
-        _attack = value;
-    }
-    
+    public PlayerDatas _playerDatas;
+    public MonsterDatas _monsterDatas;
+    public bool _attackCooldown;
+    private float _timer;
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("take damage");
-        _health -= amount;
-        if (_health <= 0)
+        if (this.CompareTag("Player"))
         {
-            Death();
+            _playerDatas._health -= amount;
+            if (_playerDatas._health <= 0)
+            {
+                Death();
+            }
+        }
+        else
+        {
+            _monsterDatas._health -= amount;
+            if (_monsterDatas._health <= 0)
+            {
+                Death();
+            }
         }
     }
 
     public void DealDamage(GameObject target)
     {
-        var other = target.GetComponent<DamageComponent>();
-        if (other != null)
+        if (!(_attackCooldown))
         {
-            other.TakeDamage(_attack);
+            var other = target.GetComponent<DamageComponent>();
+            if (other != null)
+            {
+                if (this.CompareTag("Player"))
+                {
+                    other.TakeDamage(_playerDatas._attack);
+                    
+                }
+                else
+                {
+                    other.TakeDamage(_monsterDatas._attack);
+                }
+                _attackCooldown = true;
+            }
         }
     }
 
-    public float GetHealth() 
+    public float GetHealth()
     {
-        return _health; 
+        if (this.CompareTag("Player"))
+        {
+            return _playerDatas._health;
+        }
+        else
+        {
+            return _monsterDatas._health;
+        }
     }
 
-    /*public void InFight()
-    {
-        StartCoroutine(Fighting(1f));
-    }
-
-    IEnumerator Fighting(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-    }*/
 
     private void Death()
     {
@@ -62,6 +70,16 @@ public class DamageComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(_health);
+        if (_attackCooldown)
+        {
+            _timer += Time.fixedDeltaTime;
+        }
+
+        if (_timer >= 1f) 
+        {
+            _timer -= 1f;
+            _attackCooldown = false;
+        }
+
     }
 }

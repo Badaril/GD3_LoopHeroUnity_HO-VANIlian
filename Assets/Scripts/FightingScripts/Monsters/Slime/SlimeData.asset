@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 9
   _attack: 1
-  _attackSpeed: 1
+  _attackCooldown: 0

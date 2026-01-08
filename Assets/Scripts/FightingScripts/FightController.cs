@@ -36,19 +36,20 @@ public class FightController: MonoBehaviour, IActivable
     private void FixedUpdate()
     {
         _timer += Time.fixedDeltaTime;
-        Debug.Log(_timer);
+        //qDebug.Log(_timer);
         if (_fight)
         {
             //_monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
             //Debug.Log(_player.GetStamina());
-            if ((_player.GetStamina() >= 60) & (_timer >= 1))
+            if ((_player.GetStamina() >= 60) & (!(_player.GetComponent<DamageComponent>()._attackCooldown)))
             {
+                Debug.Log("player qui attaque");
                 _player.GetComponent<DamageComponent>().DealDamage(_monster.gameObject);
-                _timer = 0;
+                
             }
-            if (_monster.Attack())
+            if (!(_monster.GetComponent<DamageComponent>()._attackCooldown))
             {
-                Debug.Log("hvhv");
+                Debug.Log("monster qui attaque");
                 _monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
             }
         }

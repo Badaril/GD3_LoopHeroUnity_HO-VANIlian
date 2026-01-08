@@ -12,8 +12,7 @@ public class Pawn : MonoBehaviour
     private void Start()
     {
         _damageComponent = this.GetComponent<DamageComponent>();
-        _damageComponent.SetHealth(20);
-        _damageComponent.SetAttack(3);
+        _damageComponent._playerDatas = _playerDatas;
         MoveToCell();
         ActivateCell();
     }
@@ -57,7 +56,7 @@ public class Pawn : MonoBehaviour
         }
         _playerDatas._stamina -= Time.deltaTime*10f;
         _playerDatas._stamina = Mathf.Clamp(_playerDatas._stamina, 0, 100);
-        Debug.Log(_playerDatas._stamina);
+        //Debug.Log(_playerDatas._stamina);
         //StartCoroutine(DecreaseStamina(1f));
     }
 
