@@ -7,6 +7,7 @@ public class FightController: MonoBehaviour, IActivable
     [SerializeField] private Pawn _player;
     [SerializeField] private Monster _monster;
     private bool _fight;
+    private float _timer;
 
     public void CellAction(Pawn playerPawn)
     {
@@ -34,12 +35,16 @@ public class FightController: MonoBehaviour, IActivable
 
     private void FixedUpdate()
     {
+        _timer += Time.fixedDeltaTime;
+        Debug.Log(_timer);
         if (_fight)
         {
             //_monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
-            if (_player.GetStamina() >= 60)
+            //Debug.Log(_player.GetStamina());
+            if ((_player.GetStamina() >= 60) & (_timer >= 1))
             {
                 _player.GetComponent<DamageComponent>().DealDamage(_monster.gameObject);
+                _timer = 0;
             }
             if (_monster.Attack())
             {
@@ -47,8 +52,8 @@ public class FightController: MonoBehaviour, IActivable
                 _monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
             }
         }
-        Debug.Log(GetFightState());
-        Debug.Log(Time.deltaTime);
+        //Debug.Log(GetFightState());
+        //Debug.Log(Time.deltaTime);
     }
 
     private void UpdateFight()

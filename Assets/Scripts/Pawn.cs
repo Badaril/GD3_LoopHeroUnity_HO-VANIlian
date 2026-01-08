@@ -12,8 +12,8 @@ public class Pawn : MonoBehaviour
     private void Start()
     {
         _damageComponent = this.GetComponent<DamageComponent>();
-        _damageComponent.SetHealth(_playerDatas._health);
-        _damageComponent.SetAttack(_playerDatas._attack);
+        _damageComponent.SetHealth(20);
+        _damageComponent.SetAttack(3);
         MoveToCell();
         ActivateCell();
     }
@@ -70,10 +70,10 @@ public class Pawn : MonoBehaviour
     private void Update()
     {
         
-        /*if (Input.GetMouseButtonDown(0) & (_fightController.GetFightState()))
+        if (Input.GetMouseButtonDown(0) & (_damageComponent._fightController.GetFightState()))
         { 
             Attack();
-        }*/
+        }
     }
 
     public void Death()

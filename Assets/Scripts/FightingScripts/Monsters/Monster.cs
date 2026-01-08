@@ -12,8 +12,8 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         _damageComponent = this.GetComponent<DamageComponent>();
-        _damageComponent.SetHealth(_monsterDatas._health);
-        _damageComponent.SetAttack(_monsterDatas._attack);
+        _damageComponent.SetHealth(9);
+        _damageComponent.SetAttack(1);
     }
 
     public bool Attack()

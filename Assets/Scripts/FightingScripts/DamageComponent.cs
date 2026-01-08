@@ -23,6 +23,7 @@ public class DamageComponent : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        Debug.Log("take damage");
         _health -= amount;
         if (_health <= 0)
         {
@@ -61,6 +62,6 @@ public class DamageComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_health);
+        //Debug.Log(_health);
     }
 }
