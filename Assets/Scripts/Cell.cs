@@ -9,23 +9,4 @@ public class Cell : MonoBehaviour, ICellActivable
             GetComponent<IActivable>().CellAction(playerPawn);
         }
     }
-
-    /*public virtual void OnCellUpdate(Pawn playerPawn)
-    {
-        if (GetComponent<IActivable>() != null)
-        {
-            GetComponent<IActivable>().CellUpdate(playerPawn);
-        }
-    }*/
-
-    /*public virtual void OnCellDeactivate(Pawn playerPawn)
-    {
-        if (GetComponent<IActivable>() != null)
-        {
-            GetComponent<IActivable>().CellDeactivate(playerPawn);
-        }
-    }*/
-
-    
-
 }

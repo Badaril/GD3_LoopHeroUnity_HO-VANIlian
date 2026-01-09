@@ -1,5 +1,5 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 
 public class DamageComponent : MonoBehaviour
 {
@@ -66,6 +66,14 @@ public class DamageComponent : MonoBehaviour
     private void Death()
     {
         _fightController.FightOver();
+        if (this.CompareTag("Player"))
+        {
+            //_playerDatas.GetComponent<Pawn>().Death();
+        }
+        else 
+        { 
+            _monsterDatas.GetComponent<Monster>().Death();
+        }
     }
 
     private void FixedUpdate()

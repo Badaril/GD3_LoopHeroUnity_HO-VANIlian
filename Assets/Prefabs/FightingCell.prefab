@@ -139,6 +139,8 @@ MonoBehaviour:
   _fightingCam: {fileID: 0}
   _player: {fileID: 0}
   _monster: {fileID: 3478725028878097040}
+  _playerDatasController: {fileID: 0}
+  _HealthMonsterDisplay: {fileID: 0}
 --- !u!1001 &5293417141009858960
 PrefabInstance:
   m_ObjectHideFlags: 0

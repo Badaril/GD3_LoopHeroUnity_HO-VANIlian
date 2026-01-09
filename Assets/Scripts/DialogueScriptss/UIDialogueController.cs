@@ -8,7 +8,7 @@ public class UIDialogueController : MonoBehaviour
     [SerializeField] private GameObject _dialoguePanel;
     [SerializeField] private TMP_Text _characterName;
     [SerializeField] private TMP_Text _dialogueText;
-    [SerializeField] private GameObject[] _diceButtons;
+    [SerializeField] private GameObject _diceBox;
 
 
     public void StartDialogue(DialogueComponent dialogueComponent)
@@ -16,7 +16,7 @@ public class UIDialogueController : MonoBehaviour
         _dialogueComponent = dialogueComponent;
         UpdateText();
         _dialoguePanel.SetActive(true);
-        SetAllButtons(false);
+        _diceBox.gameObject.SetActive(false);
     }
 
     public void UpdateText()
@@ -41,15 +41,7 @@ public class UIDialogueController : MonoBehaviour
     public void EndDialogue()
     {
         _dialoguePanel.SetActive(false);
-        SetAllButtons(true);
+        _diceBox.gameObject.SetActive(true);
         _dialogueComponent.ResetDialogue();
-    }
-
-    private void SetAllButtons(bool active)
-    {
-        for (int i = 0; i < _diceButtons.Length; i++)
-        {
-            _diceButtons[i].gameObject.SetActive(active);
-        }
     }
 }

@@ -900,6 +900,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: -3
+  _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
+  _UIPlayerDatasController: {fileID: 0}
 --- !u!1 &6800522200752757489
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,23 +1,36 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPlayerDatasController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _healthText;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Image _fillImageHealth;
+    [SerializeField] private Image _healthMonsterDisplay;
+    [SerializeField] private GameObject _DeathHUD;
+    [SerializeField] private PlayerDatas _playerDatas;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        UpdateHealth(true, _playerDatas._health);
     }
 
-    public void UpdateHealth(float health)
+    public void UpdateHealth(bool isPlayer, float value)
     {
-        _healthText.text = "Health : " + health.ToString();
+        if (isPlayer)
+        {
+            _fillImageHealth.fillAmount = value * 0.05f;
+            _healthText.text = "Health : " + value.ToString();
+        }
+        else 
+        {
+            _healthMonsterDisplay.fillAmount = value / 10;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayDeathHUD()
     {
-        
+        _DeathHUD.SetActive(true);
     }
 }

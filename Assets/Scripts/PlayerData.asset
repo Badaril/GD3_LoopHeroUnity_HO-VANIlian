@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d951d6c955c332a408fa738e7557989f, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _cellNumber: 0
-  _health: 20
+  _cellNumber: 7
+  _health: 15
   _attack: 3
   _attackCooldown: 0
   _stamina: 100

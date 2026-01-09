@@ -4,20 +4,23 @@ public class FightController: MonoBehaviour, IActivable
 {
     [SerializeField] private Camera _playerCam;
     [SerializeField] private Camera _fightingCam;
-    [SerializeField] private Pawn _player;
+    private Pawn _player;
     [SerializeField] private Monster _monster;
+    [SerializeField] private UIPlayerDatasController _playerDatasController;
     private bool _fight;
-    private float _timer;
 
     public void CellAction(Pawn playerPawn)
     {
-        _playerCam.gameObject.SetActive(false);
-        _fightingCam.gameObject.SetActive(true);
-        _player = playerPawn;
-        playerPawn.GetComponent<DamageComponent>()._fightController = this;
-        _monster.GetComponent<DamageComponent>()._fightController = this;
-        StartFight();
-
+        if (_monster != null) {
+            _monster.GetComponent<DamageComponent>()._monsterDatas._health = 9;
+            _playerDatasController.UpdateHealth(false, 1000);
+            _playerCam.gameObject.SetActive(false);
+            _fightingCam.gameObject.SetActive(true);
+            _player = playerPawn;
+            playerPawn.GetComponent<DamageComponent>()._fightController = this;
+            _monster.GetComponent<DamageComponent>()._fightController = this;
+            StartFight();
+        }
     }
 
     private void StartFight()
@@ -35,32 +38,31 @@ public class FightController: MonoBehaviour, IActivable
 
     private void FixedUpdate()
     {
-        _timer += Time.fixedDeltaTime;
-        //qDebug.Log(_timer);
         if (_fight)
         {
-            //_monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
-            //Debug.Log(_player.GetStamina());
             if ((_player.GetStamina() >= 60) & (!(_player.GetComponent<DamageComponent>()._attackCooldown)))
             {
-                Debug.Log("player qui attaque");
                 _player.GetComponent<DamageComponent>().DealDamage(_monster.gameObject);
-                
+                UpdateFight(false);
             }
             if (!(_monster.GetComponent<DamageComponent>()._attackCooldown))
             {
-                Debug.Log("monster qui attaque");
                 _monster.GetComponent<DamageComponent>().DealDamage(_player.gameObject);
+                UpdateFight(true);
             }
         }
-        //Debug.Log(GetFightState());
-        //Debug.Log(Time.deltaTime);
     }
 
-    private void UpdateFight()
+    private void UpdateFight(bool isPlayer)
     {
-        _monster.GetComponent<DamageComponent>().GetHealth();
-        _player.GetComponent<DamageComponent>().GetHealth();
+        if (isPlayer)
+        {
+            _playerDatasController.UpdateHealth(true, _player.GetComponent<DamageComponent>().GetHealth());
+        }
+        else
+        {
+            _playerDatasController.UpdateHealth(false, _monster.GetComponent<DamageComponent>().GetHealth());
+        }
     }
 
     public void FightOver()
@@ -68,6 +70,6 @@ public class FightController: MonoBehaviour, IActivable
         _fight = false;
         _playerCam.gameObject.SetActive(true);
         _fightingCam.gameObject.SetActive(false);
-        Destroy(this);
+        
     }
 }

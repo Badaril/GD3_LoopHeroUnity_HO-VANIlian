@@ -1,13 +1,11 @@
-using UnityEditor.UI;
 using UnityEngine;
-using System.Collections;
 
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private Board _board;
     [SerializeField] private PlayerDatas _playerDatas;
+    [SerializeField] private UIPlayerDatasController _playerDatasController;
     private DamageComponent _damageComponent;
-    //private bool _isAttacking;
 
     private void Start()
     {
@@ -29,7 +27,6 @@ public class Pawn : MonoBehaviour
         _playerDatas._cellNumber = _board.GetNextCellToMove(_playerDatas._cellNumber + value);
         MoveToCell ();
         ActivateCell();
-
     }
 
     private void ActivateCell()
@@ -52,31 +49,25 @@ public class Pawn : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _playerDatas._stamina += 5;
-            
         }
         _playerDatas._stamina -= Time.deltaTime*10f;
         _playerDatas._stamina = Mathf.Clamp(_playerDatas._stamina, 0, 100);
-        //Debug.Log(_playerDatas._stamina);
-        //StartCoroutine(DecreaseStamina(1f));
     }
-
-    /*IEnumerator DecreaseStamina(float duration)
-    {
-        _playerDatas._stamina -= 0.1f;
-        yield return new WaitForSeconds(duration);
-    }*/
 
     private void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0) & (_damageComponent._fightController.GetFightState()))
-        { 
-            Attack();
+        if (_damageComponent._fightController != null)
+        {
+            if (Input.GetMouseButtonDown(0) & (_damageComponent._fightController.GetFightState()))
+            {
+                Attack();
+            }
         }
     }
 
     public void Death()
     {
-        
+        _playerDatasController.DisplayDeathHUD();
+        Debug.Log("igfughufigieugfiusgiufgiusgfiuegfiuesgfgziufgsigfksz");
     }
 }
