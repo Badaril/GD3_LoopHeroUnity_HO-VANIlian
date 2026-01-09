@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterDatas: {fileID: 11400000, guid: ac0f8b9e2f24e87478b9e76dffcb2254, type: 2}
+  _gameManager: {fileID: 0}
   _isAttacking: 0
 --- !u!114 &3906361341946210403
 MonoBehaviour:
@@ -140,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fightController: {fileID: 0}
-  _playerDatas: {fileID: 0}
-  _monsterDatas: {fileID: 0}
+  _playerPawn: {fileID: 0}
+  _monster: {fileID: 11400000, guid: ac0f8b9e2f24e87478b9e76dffcb2254, type: 2}
   _attackCooldown: 0
 --- !u!1001 &2603473888934045670
 PrefabInstance:

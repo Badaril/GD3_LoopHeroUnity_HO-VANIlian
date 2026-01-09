@@ -12,7 +12,7 @@ public class FightController: MonoBehaviour, IActivable
     public void CellAction(Pawn playerPawn)
     {
         if (_monster != null) {
-            _monster.GetComponent<DamageComponent>()._monsterDatas._health = 9;
+            //_monster.GetComponent<MonsterDatas>()._health = 9;
             _playerDatasController.UpdateHealth(false, 1000);
             _playerCam.gameObject.SetActive(false);
             _fightingCam.gameObject.SetActive(true);
@@ -27,6 +27,7 @@ public class FightController: MonoBehaviour, IActivable
     {
         _fight = true;
         _player.SetStamina(0);
+        _playerDatasController.SetFightingHUD(true);
         _monster._isAttacking = true;
         _monster.Attack();
     }
@@ -40,6 +41,7 @@ public class FightController: MonoBehaviour, IActivable
     {
         if (_fight)
         {
+            _playerDatasController.UpdateStamina(_player.GetStamina());
             if ((_player.GetStamina() >= 60) & (!(_player.GetComponent<DamageComponent>()._attackCooldown)))
             {
                 _player.GetComponent<DamageComponent>().DealDamage(_monster.gameObject);
@@ -68,6 +70,7 @@ public class FightController: MonoBehaviour, IActivable
     public void FightOver()
     {
         _fight = false;
+        _playerDatasController.SetFightingHUD(false);
         _playerCam.gameObject.SetActive(true);
         _fightingCam.gameObject.SetActive(false);
         

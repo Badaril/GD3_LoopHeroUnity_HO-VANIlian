@@ -10,7 +10,7 @@ public class Pawn : MonoBehaviour
     private void Start()
     {
         _damageComponent = this.GetComponent<DamageComponent>();
-        _damageComponent._playerDatas = _playerDatas;
+        //_damageComponent._playerPawn = this;
         MoveToCell();
         ActivateCell();
     }
@@ -68,6 +68,5 @@ public class Pawn : MonoBehaviour
     public void Death()
     {
         _playerDatasController.DisplayDeathHUD();
-        Debug.Log("igfughufigieugfiusgiufgiusgfiuegfiuesgfgziufgsigfksz");
     }
 }

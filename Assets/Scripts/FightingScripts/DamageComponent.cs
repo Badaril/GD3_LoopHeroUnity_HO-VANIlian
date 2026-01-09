@@ -4,8 +4,8 @@ using UnityEngine;
 public class DamageComponent : MonoBehaviour
 {
     public FightController _fightController;
-    public PlayerDatas _playerDatas;
-    public MonsterDatas _monsterDatas;
+    public PlayerDatas _playerPawn;
+    public MonsterDatas _monster;
     public bool _attackCooldown;
     private float _timer;
 
@@ -13,16 +13,16 @@ public class DamageComponent : MonoBehaviour
     {
         if (this.CompareTag("Player"))
         {
-            _playerDatas._health -= amount;
-            if (_playerDatas._health <= 0)
+            _playerPawn._health -= amount;
+            if (_playerPawn._health <= 0)
             {
                 Death();
             }
         }
         else
         {
-            _monsterDatas._health -= amount;
-            if (_monsterDatas._health <= 0)
+            _monster._health -= amount;
+            if (_monster._health <= 0)
             {
                 Death();
             }
@@ -38,12 +38,12 @@ public class DamageComponent : MonoBehaviour
             {
                 if (this.CompareTag("Player"))
                 {
-                    other.TakeDamage(_playerDatas._attack);
+                    other.TakeDamage(_playerPawn._attack);
                     
                 }
                 else
                 {
-                    other.TakeDamage(_monsterDatas._attack);
+                    other.TakeDamage(_monster._attack);
                 }
                 _attackCooldown = true;
             }
@@ -54,11 +54,11 @@ public class DamageComponent : MonoBehaviour
     {
         if (this.CompareTag("Player"))
         {
-            return _playerDatas._health;
+            return _playerPawn._health;
         }
         else
         {
-            return _monsterDatas._health;
+            return _monster._health;
         }
     }
 
@@ -72,12 +72,14 @@ public class DamageComponent : MonoBehaviour
         }
         else 
         { 
-            _monsterDatas.GetComponent<Monster>().Death();
+            _monster.GetComponent<Monster>().Death();
         }
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(_playerPawn);
+        Debug.Log(_monster);
         if (_attackCooldown)
         {
             _timer += Time.fixedDeltaTime;

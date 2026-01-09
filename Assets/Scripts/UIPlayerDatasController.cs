@@ -6,6 +6,10 @@ public class UIPlayerDatasController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private Image _fillImageHealth;
+    [SerializeField] private TMP_Text _staminaText;
+    [SerializeField] private Image _fillStamina;
+    [SerializeField] private GameObject _staminaHUD;
+    [SerializeField] private GameObject _diceBox;
     [SerializeField] private Image _healthMonsterDisplay;
     [SerializeField] private GameObject _DeathHUD;
     [SerializeField] private PlayerDatas _playerDatas;
@@ -27,6 +31,18 @@ public class UIPlayerDatasController : MonoBehaviour
         {
             _healthMonsterDisplay.fillAmount = value / 10;
         }
+    }
+
+    public void SetFightingHUD(bool active)
+    {
+        _staminaHUD.SetActive(active);
+        _diceBox.SetActive(active);
+    }
+
+    public void UpdateStamina(float value)
+    {
+        _fillStamina.fillAmount = value / 100;
+        _staminaText.text = "Stamina : " + Mathf.CeilToInt(value).ToString() + "/100";
     }
 
     public void DisplayDeathHUD()

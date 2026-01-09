@@ -137,10 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCam: {fileID: 0}
   _fightingCam: {fileID: 0}
-  _player: {fileID: 0}
   _monster: {fileID: 3478725028878097040}
   _playerDatasController: {fileID: 0}
-  _HealthMonsterDisplay: {fileID: 0}
 --- !u!1001 &5293417141009858960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +151,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: === Slime ===
       objectReference: {fileID: 0}
+    - target: {fileID: 3906361341946210403, guid: 22b5d1cca35458a45be275dad942cbd5, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 3478725028878097040}
+    - target: {fileID: 3906361341946210403, guid: 22b5d1cca35458a45be275dad942cbd5, type: 3}
+      propertyPath: _fightController
+      value: 
+      objectReference: {fileID: 6729220766427382072}
     - target: {fileID: 5882256290246782075, guid: 22b5d1cca35458a45be275dad942cbd5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
