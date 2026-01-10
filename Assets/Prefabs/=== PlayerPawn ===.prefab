@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _board: {fileID: 0}
   _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
-  _fightController: {fileID: 0}
+  _playerDatasController: {fileID: 0}
 --- !u!114 &1229474138576254617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fightController: {fileID: 0}
+  _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
+  _monsterDatas: {fileID: 11400000, guid: ac0f8b9e2f24e87478b9e76dffcb2254, type: 2}
+  _attackCooldown: 0
 --- !u!1 &8408157229774490237
 GameObject:
   m_ObjectHideFlags: 0

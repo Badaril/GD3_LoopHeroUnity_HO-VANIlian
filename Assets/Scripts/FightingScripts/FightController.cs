@@ -12,7 +12,7 @@ public class FightController: MonoBehaviour, IActivable
     public void CellAction(Pawn playerPawn)
     {
         if (_monster != null) {
-            //_monster.GetComponent<MonsterDatas>()._health = 9;
+            _monster.SetHealth();
             _playerDatasController.UpdateHealth(false, 1000);
             _playerCam.gameObject.SetActive(false);
             _fightingCam.gameObject.SetActive(true);

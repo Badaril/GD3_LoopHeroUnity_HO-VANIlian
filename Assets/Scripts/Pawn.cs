@@ -50,18 +50,17 @@ public class Pawn : MonoBehaviour
         {
             _playerDatas._stamina += 5;
         }
-        _playerDatas._stamina -= Time.deltaTime*10f;
+        _playerDatas._stamina -= Time.deltaTime*5f;
+
         _playerDatas._stamina = Mathf.Clamp(_playerDatas._stamina, 0, 100);
+
     }
 
     private void Update()
     {
-        if (_damageComponent._fightController != null)
+        if (_damageComponent._fightController != null & (_damageComponent._fightController.GetFightState()))
         {
-            if (Input.GetMouseButtonDown(0) & (_damageComponent._fightController.GetFightState()))
-            {
-                Attack();
-            }
+            Attack();
         }
     }
 

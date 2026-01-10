@@ -18,6 +18,11 @@ public class Monster : MonoBehaviour
         _isAttacking = true;
     }
 
+    public void SetHealth()
+    {
+        _monsterDatas._health = 9;
+    }
+
     public void Death()
     {
         this.gameObject.SetActive(false);

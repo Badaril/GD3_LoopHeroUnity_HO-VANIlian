@@ -6598,6 +6598,14 @@ PrefabInstance:
       propertyPath: _playerPawn
       value: 
       objectReference: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
+    - target: {fileID: 9170402143031454195, guid: 0955d14dffc9ada4aa4ed70053ea42f0, type: 3}
+      propertyPath: _playerDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
+    - target: {fileID: 9170402143031454195, guid: 0955d14dffc9ada4aa4ed70053ea42f0, type: 3}
+      propertyPath: _monsterDatas
+      value: 
+      objectReference: {fileID: 11400000, guid: ac0f8b9e2f24e87478b9e76dffcb2254, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6815,6 +6823,10 @@ PrefabInstance:
       propertyPath: _playerHealth
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7322945676524129125, guid: 2f3598772aadf92419b64537f7fe02f8, type: 3}
+      propertyPath: _playerDatasController
+      value: 
+      objectReference: {fileID: 695710974}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

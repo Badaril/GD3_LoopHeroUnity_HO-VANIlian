@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,13 +37,13 @@ public class UIPlayerDatasController : MonoBehaviour
     public void SetFightingHUD(bool active)
     {
         _staminaHUD.SetActive(active);
-        _diceBox.SetActive(active);
+        _diceBox.SetActive(!active);
     }
 
     public void UpdateStamina(float value)
     {
         _fillStamina.fillAmount = value / 100;
-        _staminaText.text = "Stamina : " + Mathf.CeilToInt(value).ToString() + "/100";
+        _staminaText.text = "Stamina : " + math.floor(value).ToString() + "/100";
     }
 
     public void DisplayDeathHUD()
