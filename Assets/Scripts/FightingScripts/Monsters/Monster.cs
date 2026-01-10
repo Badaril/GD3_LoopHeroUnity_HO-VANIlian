@@ -3,7 +3,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] private MonsterDatas _monsterDatas;
-    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private QuestManager _questManager;
     private DamageComponent _damageComponent;
     public bool _isAttacking = false;
 
@@ -25,9 +25,9 @@ public class Monster : MonoBehaviour
 
     public void Death()
     {
+
+        _questManager.UpdateQuestState();
         this.gameObject.SetActive(false);
-        _gameManager._monstersKilled += 1;
-        _gameManager.CheckLevel1();
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }

@@ -6,6 +6,10 @@ public class DamageComponent : MonoBehaviour
     public FightController _fightController;
     public PlayerDatas _playerDatas;
     public MonsterDatas _monsterDatas;
+
+    [SerializeField] private Pawn _playerPawn;
+    [SerializeField] private Monster _monster;
+
     public bool _attackCooldown;
     private float _timer;
 
@@ -68,11 +72,11 @@ public class DamageComponent : MonoBehaviour
         _fightController.FightOver();
         if (this.CompareTag("Player"))
         {
-            //_playerDatas.GetComponent<Pawn>().Death();
+            _playerPawn.Death();
         }
         else 
         { 
-            //_monster.GetComponent<Monster>().Death();
+            _monster.Death();
         }
     }
 
@@ -89,5 +93,10 @@ public class DamageComponent : MonoBehaviour
             _attackCooldown = false;
         }
 
+    }
+
+    public void SetMonster(Monster monster)
+    {
+        _monster = monster;
     }
 }

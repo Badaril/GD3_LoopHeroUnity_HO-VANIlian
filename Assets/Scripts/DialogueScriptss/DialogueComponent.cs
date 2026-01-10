@@ -4,6 +4,7 @@ public class DialogueComponent : MonoBehaviour, IActivable
 {
     [SerializeField] private DialogueDatas _dialogueDatas;
     [SerializeField] private UIDialogueController _dialogueController;
+
     private DialogueRow _currentDialogueRow;
     private int _currentRowIndex = 0;
 
@@ -13,9 +14,6 @@ public class DialogueComponent : MonoBehaviour, IActivable
         _dialogueController.StartDialogue(this);
         
     }
-    //public void CellUpdate(Pawn playerPawn)  {  }
-
-    //public void CellDeactivate(Pawn playerPawn) { }
 
     public DialogueRow GetDialogueRow() 
     {  
@@ -47,9 +45,14 @@ public class DialogueComponent : MonoBehaviour, IActivable
         _currentDialogueRow = _dialogueDatas._rows[GetNextRowNumberFromCurrentRow()];
     }
 
+    public void ReadNextRowByCondition()
+    {
+        _currentDialogueRow = _dialogueDatas._rows[_currentDialogueRow._nextRowByCondition];
+    }
+
     public bool IsDialogueFinished()
     {
-        return GetNextRowNumberFromCurrentRow() < 0;
+        return _currentDialogueRow._isDialogueFinished;
     }
 
     public void ResetDialogue() 

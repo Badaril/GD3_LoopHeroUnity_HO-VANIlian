@@ -18,6 +18,7 @@ public class FightController: MonoBehaviour, IActivable
             _fightingCam.gameObject.SetActive(true);
             _player = playerPawn;
             playerPawn.GetComponent<DamageComponent>()._fightController = this;
+            playerPawn.GetComponent<DamageComponent>().SetMonster(_monster);
             _monster.GetComponent<DamageComponent>()._fightController = this;
             StartFight();
         }

@@ -10,6 +10,8 @@ public class UIDialogueController : MonoBehaviour
     [SerializeField] private TMP_Text _dialogueText;
     [SerializeField] private GameObject _diceBox;
 
+    [SerializeField] private QuestManager _questManager;
+    [SerializeField] private UIPlayerDatasController _uIPlayerDatasController;
 
     public void StartDialogue(DialogueComponent dialogueComponent)
     {
@@ -33,7 +35,13 @@ public class UIDialogueController : MonoBehaviour
             UpdateText();
         }
         else
-        { 
+        {
+            if (_questManager._isQuestFinished)
+            {
+                _dialogueComponent.ReadNextRowByCondition();
+                UpdateText();
+                _uIPlayerDatasController.DisplayNextLevelHUD();
+            }
             EndDialogue();
         }
     }
@@ -42,6 +50,6 @@ public class UIDialogueController : MonoBehaviour
     {
         _dialoguePanel.SetActive(false);
         _diceBox.gameObject.SetActive(true);
-        _dialogueComponent.ResetDialogue();
+
     }
 }

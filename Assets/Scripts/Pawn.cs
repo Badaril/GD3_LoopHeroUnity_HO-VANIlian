@@ -58,9 +58,12 @@ public class Pawn : MonoBehaviour
 
     private void Update()
     {
-        if (_damageComponent._fightController != null & (_damageComponent._fightController.GetFightState()))
+        if (_damageComponent._fightController != null)
         {
-            Attack();
+            if (_damageComponent._fightController.GetFightState())
+            {
+                Attack();
+            }
         }
     }
 
