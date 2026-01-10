@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rows:
   - _characterName: Fermier
-    _dialogueLong: "Bonjour, j'ai besoin que tu me d\xE9barasses de ces monstres."
+    _dialogueLong: "Bonjour, j'ai besoin que tu me d\xE9barasses de ces monstres
+      dans ma ferme."
     _nextRowNumber: 1
     _nextRowByCondition: -1
     _isDialogueFinished: 0
