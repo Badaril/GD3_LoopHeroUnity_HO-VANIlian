@@ -60,5 +60,6 @@ public class UIPlayerDatasController : MonoBehaviour
     public void DisplayNextLevelHUD()
     {
         _nextLevelHUD.SetActive(true);
+        _playerDatas._attack += 2;
     }
 }

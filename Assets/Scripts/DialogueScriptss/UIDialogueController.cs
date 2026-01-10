@@ -16,6 +16,10 @@ public class UIDialogueController : MonoBehaviour
     public void StartDialogue(DialogueComponent dialogueComponent)
     {
         _dialogueComponent = dialogueComponent;
+        if (_questManager._isQuestFinished)
+        {
+            _dialogueComponent.ReadNextRowByCondition();
+        }
         UpdateText();
         _dialoguePanel.SetActive(true);
         _diceBox.gameObject.SetActive(false);
@@ -34,15 +38,19 @@ public class UIDialogueController : MonoBehaviour
             _dialogueComponent.ReadNextRow();
             UpdateText();
         }
+
         else
         {
             if (_questManager._isQuestFinished)
             {
                 _dialogueComponent.ReadNextRowByCondition();
                 UpdateText();
-                _uIPlayerDatasController.DisplayNextLevelHUD();
             }
-            EndDialogue();
+            else
+            {
+                _dialogueComponent.ReadNextRow();
+            }
+        EndDialogue();
         }
     }
 
@@ -50,6 +58,9 @@ public class UIDialogueController : MonoBehaviour
     {
         _dialoguePanel.SetActive(false);
         _diceBox.gameObject.SetActive(true);
-
+        if (_questManager._isQuestFinished)
+        {
+            _uIPlayerDatasController.DisplayNextLevelHUD();
+        }
     }
 }

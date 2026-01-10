@@ -69,7 +69,7 @@ public class DamageComponent : MonoBehaviour
 
     private void Death()
     {
-        _fightController.FightOver();
+        
         if (this.CompareTag("Player"))
         {
             _playerPawn.Death();
@@ -78,6 +78,7 @@ public class DamageComponent : MonoBehaviour
         { 
             _monster.Death();
         }
+        _fightController.FightOver();
     }
 
     private void FixedUpdate()

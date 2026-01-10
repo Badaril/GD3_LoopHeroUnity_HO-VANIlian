@@ -31,11 +31,11 @@ MonoBehaviour:
   - _characterName: Fermier
     _dialogueLong: Mais il reste encore des monstres. Reviens me voir quand ils sont
       tous morts.
-    _nextRowNumber: 4
-    _nextRowByCondition: 5
+    _nextRowNumber: 3
+    _nextRowByCondition: 4
     _isDialogueFinished: 1
   - _characterName: Fermier
     _dialogueLong: "Merci beaucoup ! Tu n'as plus rien \xE0 voir ici, tu peux partir"
-    _nextRowNumber: 5
-    _nextRowByCondition: 5
+    _nextRowNumber: 4
+    _nextRowByCondition: 4
     _isDialogueFinished: 1

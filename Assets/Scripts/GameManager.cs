@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        _playerDatas._cellNumber = 0;
         SceneManager.LoadScene("LoopHeroLvl2_Map");
 
     }

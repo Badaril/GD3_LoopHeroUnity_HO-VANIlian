@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class DialogueComponent : MonoBehaviour, IActivable
@@ -6,13 +7,12 @@ public class DialogueComponent : MonoBehaviour, IActivable
     [SerializeField] private UIDialogueController _dialogueController;
 
     private DialogueRow _currentDialogueRow;
-    private int _currentRowIndex = 0;
+    private int _currentRowIndex;
 
     public void CellAction(Pawn playerPawn)
     {
         _currentDialogueRow = GetDialogueRow();
         _dialogueController.StartDialogue(this);
-        
     }
 
     public DialogueRow GetDialogueRow() 
@@ -42,12 +42,14 @@ public class DialogueComponent : MonoBehaviour, IActivable
 
     public void ReadNextRow()
     {
-        _currentDialogueRow = _dialogueDatas._rows[GetNextRowNumberFromCurrentRow()];
+        _currentRowIndex = GetNextRowNumberFromCurrentRow();
+        _currentDialogueRow = _dialogueDatas._rows[_currentRowIndex];   
     }
 
     public void ReadNextRowByCondition()
     {
-        _currentDialogueRow = _dialogueDatas._rows[_currentDialogueRow._nextRowByCondition];
+        _currentRowIndex = _currentDialogueRow._nextRowByCondition;
+        _currentDialogueRow = _dialogueDatas._rows[_currentRowIndex];
     }
 
     public bool IsDialogueFinished()
@@ -60,5 +62,8 @@ public class DialogueComponent : MonoBehaviour, IActivable
         _currentDialogueRow = _dialogueDatas._rows[0];
     }
 
-    
+    private void Update()
+    {
+        Debug.Log(_currentRowIndex);
+    }
 }

@@ -25,9 +25,8 @@ public class Monster : MonoBehaviour
 
     public void Death()
     {
-
         _questManager.UpdateQuestState();
         this.gameObject.SetActive(false);
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
