@@ -15,7 +15,7 @@ public class Dice : MonoBehaviour
 
     public void RollDice()
     {
-        Debug.Log($"Le dé a fait {_value}");
+        //Debug.Log($"Le dé a fait {_value}");
         _playerPawn.TryMoving(_value);
         _alreadyDrawed = false;
         _chooseDiceButton.SetActive(false);

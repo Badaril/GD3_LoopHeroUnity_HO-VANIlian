@@ -61,9 +61,4 @@ public class DialogueComponent : MonoBehaviour, IActivable
     { 
         _currentDialogueRow = _dialogueDatas._rows[0];
     }
-
-    private void Update()
-    {
-        Debug.Log(_currentRowIndex);
-    }
 }
