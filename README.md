@@ -26,7 +26,7 @@ Il y a 4 cases différentes dans cette première zone :
 - 1 case noire "Dialogue" qui permet d'échanger avec le fermier
 - 1 case rouge "Piège" qui fait perdre 3 PV au joueur s'il s'arrête dessus.
 - 1 case rose "Soin" qui redonne 5 PV au joueur s'il s'arrête dessus.
-- 1 case bleue "Combat" qui change le point de vue de la caméra et qu'il lance un combat entre le héros et le monstre présent sur la case. On a un plan rapproché du combat, avec la vie du monstre et une barre de STAMINA est apparu sur HUD du joueur. Pour pouvoir attaquer, le joueur doit appuyer sur son "Clic gauche" afin de remplir la barre de STAMINA. Une fois rempli à plus de 60, il inflige 3 dégâts toutes les secondes. Le monstre, ici un slime, quand à lui, attaque de 1 dégât toutes les secondes.
+- 1 case bleue "Combat" qui change le point de vue de la caméra et qu'il lance un combat entre le héros et le monstre présent sur la case. On a un plan rapproché du combat, avec la vie du monstre et une barre de STAMINA est apparu sur HUD du joueur. Pour pouvoir attaquer, le joueur doit appuyer sur son "Clic gauche" afin de remplir la barre de STAMINA. Une fois rempli à plus de 60, il inflige 3 dégâts toutes les secondes. Le monstre, ici un slime, attaque de 1 dégât toutes les secondes.
   
 Le joueur commence sur la case "Dialogue" sur laquelle un fermier lui demande de tuer 3 slimes. S'il parvient à éliminer tous les monstres ET qu'il revienne parler au fermier sans mourir, le fermier donne une nouvelle arme en récompense. A la fin du dialogue, le joueur peut changer de zone. S'il meurt sur un piège ou au combat, le joueur doit recommencer la quête du début.
   
