@@ -1,5 +1,34 @@
-# GD3_LoopHeroUnity_HO-VANIlian
-Nature Morte – Unity Engine 6000.0.50f1
+# GD3_LoopHeroUnreal_HO-VANIlian
+# Devoir 12/01 : Loop Hero V1
+
+# Consigne
+Ce devoir doit vous mener à la première version de votre Loop Hero.
+  
+Comme d'habitude vous aurez des éléments minimum à réaliser et des bonus. Si vous réalisez des bonus non prévus, j'en prendrais compte et ils seront notés. Toute fois les bonus ne seront réellement pris en compte QUE si la base est là.
+  
+Demande de base :
+
+- Un jeu de type loop hero avec un fonctionnement de déplacement par case. L'idée générale est de créer des "actions" sur les cases pour créer une logique de jeu. Il peut y avoir des cases neutres, qui n'ont pas d'actions associées.
+- Le déplacement est à votre convenance : hasard avec un dé ou un autre système de hasard, ou contrôlé par le joueur.
+- Une UI adaptée et compréhensible, suffisante pour pouvoir jouer à votre jeu.
+- AU MINIMUM trois cases actions différentes, l'un d'entre elle déclenchera OBLIGATOIREMENT un dialogue. Les autres actions sont à votre convenance, il faut que chaque action, ou du moins son résultat soit compréhensible.
+- Un système de dialogue linéaire cohérent. Avec une gestion du redémarrage du dialogue cohérente.
+- Un système de victoire et de défaite ou de passage au niveau suivant le cas échéant. Les conditions sont à votre convenance.
+
+# Notes d'intention
+Le joueur incarne un héros qui doit s'améliorer en parcourant un plateau à l'aide de dés dans lequel il boucle. Ici, le joeur doit combattre et vaincre tous les ennemis de la première zone : une ferme.
+
+Sur le HUD, le joueur peut voir ses PV et il possède 2 dés : 1 dé (6) et 1 dé (3). Le joueur peut décider de choisir son dé afin d'avancer du nombre de cases que le jet du dé. Il ne peut relancer les dés qu'une fois utilisé.
+  
+Il y a 4 cases différentes dans cette première zone : 
+- 1 case noire "Dialogue" qui permet d'échanger avec le fermier
+- 1 case rouge "Piège" qui fait perdre 3 PV au joueur s'il s'arrête dessus.
+- 1 case rose "Soin" qui redonne 5 PV au joueur s'il s'arrête dessus.
+- 1 case bleue "Combat" qui change le point de vue de la caméra et qu'il lance un combat entre le héros et le monstre présent sur la case. On a un plan rapproché du combat, avec la vie du monstre et une barre de STAMINA est apparu sur HUD du joueur. Pour pouvoir attaquer, le joueur doit appuyer sur son "Clic gauche" afin de remplir la barre de STAMINA. Une fois rempli à plus de 60, il inflige 3 dégâts toutes les secondes. Le monstre, ici un slime, quand à lui, attaque de 1 dégât toutes les secondes.
+  
+Le joueur commence sur la case "Dialogue" sur laquelle un fermier lui demande de tuer 3 slimes. S'il parvient à éliminer tous les monstres ET qu'il revienne parler au fermier sans mourir, le fermier donne une nouvelle arme en récompense. A la fin du dialogue, le joueur peut changer de zone. S'il meurt sur un piège ou au combat, le joueur doit recommencer la quête du début.
+  
+# Devoir 21/11 : Nature Morte – Unity Engine 6000.0.50f1
 
 # Important
 J'ai découvert aujourd'hui (21/11/25) qu'on pouvait exporter un level Unreal en FBX. Je ne sais pas si je pouvais utiliser cette technique donc j'ai fait une nouvelle scene utilisant cette technique. Tout se trouve dans ce dossier "Assets/NatureMorte/NatureMorteByExport"
