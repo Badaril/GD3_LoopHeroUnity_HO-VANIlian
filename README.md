@@ -15,6 +15,8 @@ Demande de base :
 - Un système de dialogue linéaire cohérent. Avec une gestion du redémarrage du dialogue cohérente.
 - Un système de victoire et de défaite ou de passage au niveau suivant le cas échéant. Les conditions sont à votre convenance.
 
+Ces demandes de base seront appliquées sur Unreal ET Unity.
+
 # Notes d'intention
 Le joueur incarne un héros qui doit s'améliorer en parcourant un plateau à l'aide de dés dans lequel il boucle. Ici, le joeur doit combattre et vaincre tous les ennemis de la première zone : une ferme.
 
