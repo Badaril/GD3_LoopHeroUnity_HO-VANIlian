@@ -10,5 +10,9 @@ public class HealingComponent : MonoBehaviour, IActivable
         _playerDatas._health += value;
         _playerDatas._health = Mathf.Clamp(_playerDatas._health, 0, 20);
         _UIPlayerDatasController.UpdateHealth(true,_playerDatas._health);
+        if (_playerDatas._health <= 0)
+        {
+            _UIPlayerDatasController.DisplayDeathHUD();
+        }
     }
 }
