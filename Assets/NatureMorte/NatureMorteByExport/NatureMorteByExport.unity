@@ -338,11 +338,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f6aff56e10b32864aa6925c7fb06b955, type: 2}
     - target: {fileID: -4078028017516975101, guid: 0b01d720fd354f14b93f2a9c4ff1ce34, type: 3}
       propertyPath: field of view
-      value: 75.71156
+      value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: -4078028017516975101, guid: 0b01d720fd354f14b93f2a9c4ff1ce34, type: 3}
       propertyPath: m_FocalLength
-      value: 10
+      value: 13.462192
       objectReference: {fileID: 0}
     - target: {fileID: -3675971747630242105, guid: 0b01d720fd354f14b93f2a9c4ff1ce34, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -482,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 69816356db7b6c7479f9fb30dd8fc3d1, type: 2}
     - target: {fileID: 3708546125363691887, guid: 0b01d720fd354f14b93f2a9c4ff1ce34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.728
+      value: 24.61
       objectReference: {fileID: 0}
     - target: {fileID: 3915337724065923683, guid: 0b01d720fd354f14b93f2a9c4ff1ce34, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
