@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SightPerception : MonoBehaviour
 {
-    [SerializeField] private bool isDetected;
-    [SerializeField] private float detectionRange = 5f;
+    public bool isDetected;
+    [SerializeField] private float detectionRange = 15f;
     [SerializeField] GameObject detectionObject;
     private Vector3 targetDirection;
 
@@ -12,6 +12,7 @@ public class SightPerception : MonoBehaviour
         ActivateDetection();
     }
 
+    //faire une zone de perte
     public void ActivateDetection()
     {
         targetDirection = detectionObject.transform.position - transform.position;
