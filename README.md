@@ -1,4 +1,35 @@
 # GD3_LoopHeroUnreal_HO-VANIlian
+# Devoir 07/04 : Loop Hero V2
+
+# Consigne
+L'objectif ici est de disposer de deux jeux basés sur les loop hero déjà réalisés avec pour chacun d'entre eux un mini jeu déclenché en arrivant sur une case spécifique, ou plusieurs cases si cela correspond au jeu prévu.
+
+Les mini jeux seront :
+- un jeu de type cache cache avec un personnage animé qui patrouille et poursuit le joueur jusqu'à l'attraper. Son comportement pourra être plus complexe dans le cadre d'un bonus.
+- un autre mini jeu de votre choix, ou les conditions de victoire et de défaite seront clairement visibles. Un personnage animé n'est pas obligatoire.
+Les deux mini-jeux devront influencer le jeu principal, par une récupération de ressources, de points ou d'objets.
+
+Attentes de rendu pour ce devoir :
+un jeu unity contenant UN des deux mini jeux
+un jeu Unreal contenant L'AUTRE mini-jeu.
+des readme expliquant clairement le fonctionnement de vos jeux (one page doc)
+
+# Notes d'intention  
+Dans ce deuxième niveau, le joueur doit récupérer la bague du roi, volée par des monstres qui se sont réfugiés dans un labyrinthe. Un garde l'entrée et le deuxième surveille l'intérieur.  
+Les deux mini-jeux sont :  
+- un duel de cartes
+- un parcours de labyrinthe avec un garde qui patrouille dedans.
+
+Sur ce moteur de jeu, j'ai codé le duel de cartes. Le duel se lance quand le joueur tombe sur la case Duel. Cette case se trouve à l'entrée du labyrinthe. Il faut donc gagner son duel pour débloquer le passage pour pouvoir ensuite rentrer dans le labyrinthe.  
+
+Le joueur et son adversaire IA possède une main de six cartes : une carte "PAN", deux cartes "ESQUIVE" et trois cartes "ATTENTE". Chaque joueur choisit une carte de sa main et la pose face caché. On retourne ensuite les cartes :  
+
+- S'il y a 1 carte "PAN" contre 1 carte "ATTENTE", le joueur qui a posé la carte "PAN" gagne et met fin au duel.
+- S'il y a 2 cartes "PAN", les joueurs s'entretuent et le duel fini en match nul.
+- Dans toutes les autres configurations, le duel continue et les joueurs défaussent la carte qui viennent de jouer.  
+
+Une fois l'adversaire IA battu, le joueur peut accéder librement au labyrinthe.
+
 # Devoir 12/01 : Loop Hero V1
 
 # Consigne
