@@ -19,12 +19,13 @@ public class UIPlayerDatasController : MonoBehaviour
     [SerializeField] private GameObject _DeathHUD;
     [SerializeField] private GameObject _nextLevelHUD;
 
-    [SerializeField] private PlayerDatas _playerDatas;
+    /*[SerializeField]*/ private PlayerDatas _playerDatas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void LateStart(PlayerDatas playerdatas)
     {
-        UpdateHealth(true, _playerDatas._health);
+        _playerDatas = playerdatas;
+        UpdateHealth(true, _playerDatas._data._health);
     }
 
     public void UpdateHealth(bool isPlayer, float value)
@@ -60,6 +61,6 @@ public class UIPlayerDatasController : MonoBehaviour
     public void DisplayNextLevelHUD()
     {
         _nextLevelHUD.SetActive(true);
-        _playerDatas._attack += 2;
+        _playerDatas._data._attack += 2;
     }
 }

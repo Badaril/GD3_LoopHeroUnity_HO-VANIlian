@@ -7,10 +7,10 @@ public class HealingComponent : MonoBehaviour, IActivable
     [SerializeField] private UIPlayerDatasController _UIPlayerDatasController;
     public void CellAction(Pawn playerPawn)
     {
-        _playerDatas._health += value;
-        _playerDatas._health = Mathf.Clamp(_playerDatas._health, 0, 20);
-        _UIPlayerDatasController.UpdateHealth(true,_playerDatas._health);
-        if (_playerDatas._health <= 0)
+        _playerDatas._data._health += value;
+        _playerDatas._data._health = Mathf.Clamp(_playerDatas._data._health, 0, 20);
+        _UIPlayerDatasController.UpdateHealth(true,_playerDatas._data._health);
+        if (_playerDatas._data._health <= 0)
         {
             _UIPlayerDatasController.DisplayDeathHUD();
         }

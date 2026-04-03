@@ -5,6 +5,7 @@ public class HandCreator : Singleton<HandCreator>
 {
     [SerializeField] private CardHUD cardTemplatePrefab;
     [SerializeField] private CardHand playerCardHand;
+    [SerializeField] private CardHand IAHand;
     [SerializeField] private CardDatas esquiveData;
     [SerializeField] private CardDatas panData;
     [SerializeField] private CardDatas attenteData;
@@ -22,21 +23,31 @@ public class HandCreator : Singleton<HandCreator>
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            CreateHand(panData);
+            CreateHand(panData, playerCardHand);
 
-            CreateHand(esquiveData);
-            CreateHand(esquiveData);
+            CreateHand(esquiveData, playerCardHand);
+            CreateHand(esquiveData, playerCardHand);
             
-            CreateHand(attenteData);
-            CreateHand(attenteData);
-            CreateHand(attenteData);
+            CreateHand(attenteData, playerCardHand);
+            CreateHand(attenteData, playerCardHand);
+            CreateHand(attenteData, playerCardHand);
+
+            CreateHand(panData, IAHand);
+
+            CreateHand(esquiveData, IAHand);
+            CreateHand(esquiveData, IAHand);
+
+            CreateHand(attenteData, IAHand);
+            CreateHand(attenteData, IAHand);
+            CreateHand(attenteData, IAHand);
         }
     }
 
-    public void CreateHand(CardDatas type)
+    public void CreateHand(CardDatas type, CardHand hand)
     {
         Card card = new(type);
-        CardHUD newCard = Instance.CreateCard(card, transform.position, Quaternion.identity);
-        StartCoroutine(playerCardHand.AddCard(newCard));
+        CardHUD newCard = /*Instance.*/CreateCard(card, transform.position, Quaternion.identity);
+        StartCoroutine(hand.AddCard(newCard));
+        //StartCoroutine(IAHand.AddCard(newCard));
     }
 }

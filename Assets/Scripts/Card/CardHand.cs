@@ -8,7 +8,7 @@ using UnityEngine.Splines;
 public class CardHand : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineHand;
-    private List<CardHUD> allCardsInHand = new();
+    public List<CardHUD> allCardsInHand = new();
 
     public IEnumerator AddCard(CardHUD cardHUD)
     {

@@ -1,20 +1,60 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerDatas _playerDatas;
+
+    [SerializeField] private Pawn _playerPawnRef;
+
+    [SerializeField] private UIPlayerDatasController _playerHUDRef;
+    //private PlayerData _playerData;
+    private GameDataManager _gameDataManager;
+
+    private void Start()
+    {
+        _playerDatas = ScriptableObject.CreateInstance<PlayerDatas>();
+
+        _gameDataManager = new GameDataManager();
+
+        SaveGame();
+        LoadGame();
+
+        _playerPawnRef.LateStart(_playerDatas);
+        _playerHUDRef.LateStart(_playerDatas);
+    }
+
     public void RestartLevel()
     {
-        _playerDatas._health = 20;
-        _playerDatas._cellNumber = 0;
+        _playerDatas._data._health = 20;
+        _playerDatas._data._cellNumber = 0;
+        SaveGame();
+        LoadGame();
         SceneManager.LoadScene("LoopHeroLvl1_Map");
     }
 
     public void NextLevel()
     {
-        _playerDatas._cellNumber = 0;
+        _playerDatas._data._cellNumber = 0;
+        SaveGame();
+        LoadGame();
         SceneManager.LoadScene("LoopHeroLvl2_Map");
 
+    }
+
+    public void SaveGame()
+    {
+        _gameDataManager.SaveGameData(_playerDatas._data, "gameSaveFile.txt");
+    }
+
+    public void LoadGame()
+    {
+        _playerDatas._data = _gameDataManager.LoadGameData("gameSaveFile.txt");
+    }
+
+    private void Update()
+    {
+        //Debug.Log(_playerDatas._data._cellNumber + "cellNumber");
     }
 }

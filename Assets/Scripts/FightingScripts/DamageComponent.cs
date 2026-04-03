@@ -13,12 +13,17 @@ public class DamageComponent : MonoBehaviour
     public bool _attackCooldown;
     private float _timer;
 
+    public void LateStart(PlayerDatas playerdatas)
+    {
+        _playerDatas = playerdatas;
+    }
+
     public void TakeDamage(float amount)
     {
         if (this.CompareTag("Player"))
         {
-            _playerDatas._health -= amount;
-            if (_playerDatas._health <= 0)
+            _playerDatas._data._health -= amount;
+            if (_playerDatas._data._health <= 0)
             {
                 Death();
             }
@@ -42,7 +47,7 @@ public class DamageComponent : MonoBehaviour
             {
                 if (this.CompareTag("Player"))
                 {
-                    other.TakeDamage(_playerDatas._attack);
+                    other.TakeDamage(_playerDatas._data._attack);
                     
                 }
                 else
@@ -58,7 +63,7 @@ public class DamageComponent : MonoBehaviour
     {
         if (this.CompareTag("Player"))
         {
-            return _playerDatas._health;
+            return _playerDatas._data._health;
         }
         else
         {

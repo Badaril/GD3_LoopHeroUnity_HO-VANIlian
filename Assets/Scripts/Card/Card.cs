@@ -6,6 +6,10 @@ public class Card
     public Sprite Image => data.Image;
     private CardDatas data;
 
+    public bool CanBeHover = true;
+
+    public int Value => data.Value;
+
     public Card(CardDatas cardData)
     {
         data = cardData;

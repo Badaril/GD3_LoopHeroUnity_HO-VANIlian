@@ -6,9 +6,12 @@ public class CardHoverSystem : Singleton<CardHoverSystem>
 
     public void Show(Card card, Vector3 position)
     {
-        hoveredCardDisplay.gameObject.SetActive(true);
-        hoveredCardDisplay.SetupCard(card);
-        hoveredCardDisplay.transform.position = position;
+        if (card.CanBeHover)
+        {
+            hoveredCardDisplay.gameObject.SetActive(true);
+            hoveredCardDisplay.SetupCard(card);
+            hoveredCardDisplay.transform.position = position;
+        }
     }
 
     public void Hide() 

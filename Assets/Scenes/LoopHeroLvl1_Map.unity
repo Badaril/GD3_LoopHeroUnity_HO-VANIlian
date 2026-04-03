@@ -1894,7 +1894,6 @@ MonoBehaviour:
   _healthMonsterDisplay: {fileID: 1554807481}
   _DeathHUD: {fileID: 1194227223}
   _nextLevelHUD: {fileID: 879763637}
-  _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
 --- !u!1 &726387709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6903,6 +6902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerDatas: {fileID: 11400000, guid: c7a280c569de60d4c9c7d0a63d601863, type: 2}
+  _playerPawnRef: {fileID: 1412645871156107997}
+  _playerHUDRef: {fileID: 695710974}
 --- !u!4 &1991714885
 Transform:
   m_ObjectHideFlags: 0

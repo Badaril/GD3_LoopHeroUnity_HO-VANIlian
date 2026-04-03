@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Esquive
   m_EditorClassIdentifier: Assembly-CSharp::CardDatas
   <Image>k__BackingField: {fileID: 0}
+  <Value>k__BackingField: -1
