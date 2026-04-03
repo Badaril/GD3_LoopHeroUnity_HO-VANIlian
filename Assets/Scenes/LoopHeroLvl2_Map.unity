@@ -482,6 +482,7 @@ MonoBehaviour:
   panData: {fileID: 0}
   attenteData: {fileID: 0}
   cardDropAreaForIA: {fileID: 2074873835}
+  indexOfCardPlay: 0
 --- !u!1 &157860218
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &157860219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1011,7 +1012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410627352
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,6 +3132,7 @@ GameObject:
   - component: {fileID: 851872659}
   - component: {fileID: 851872660}
   - component: {fileID: 851872661}
+  - component: {fileID: 851872662}
   m_Layer: 0
   m_Name: DuelScene
   m_TagString: Untagged
@@ -3146,7 +3148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851872658}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -33.77, y: 8.4, z: -2.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3159,7 +3161,7 @@ Transform:
   - {fileID: 155688074}
   - {fileID: 2008244310}
   - {fileID: 2074873836}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1028149568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &851872660
 MonoBehaviour:
@@ -3185,6 +3187,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bdff06895451e488cd8c4627e342e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionSystem
+--- !u!114 &851872662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851872658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fe4b1682cc0af46a82b3f15d854926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DuelManager
+  IACardManager: {fileID: 155688077}
+  _playerCamera: {fileID: 0}
+  _duelCamera: {fileID: 0}
+  _playerHUD: {fileID: 0}
 --- !u!1 &879763637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3671,6 +3689,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 851872659}
   - {fileID: 1158705570}
   - {fileID: 846174070}
   m_Father: {fileID: 0}
@@ -6931,7 +6950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1844098504
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7593,7 +7612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1975454652
 Transform:
   m_ObjectHideFlags: 0
@@ -7915,6 +7934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropCardArea
   col: {fileID: 2008244314}
+  duelManager: {fileID: 851872662}
 --- !u!212 &2008244313
 SpriteRenderer:
   serializedVersion: 2
@@ -9057,4 +9077,3 @@ SceneRoots:
   - {fileID: 1975454652}
   - {fileID: 1923903500}
   - {fileID: 1991714885}
-  - {fileID: 851872659}

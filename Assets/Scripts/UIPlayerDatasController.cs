@@ -47,6 +47,17 @@ public class UIPlayerDatasController : MonoBehaviour
         _diceBox.SetActive(!active);
     }
 
+    public void SetDuelHUD(bool active)
+    {
+        _diceBox.SetActive(!active);
+        //remove health bar
+    }
+
+    public void DisplayDuelResult(bool playerHasWin)
+    {
+        //1 hud and change text in function of bool
+    }
+
     public void UpdateStamina(float value)
     {
         _fillStamina.fillAmount = value / 100;
