@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using NUnit.Framework;
 using UnityEngine;
@@ -14,6 +15,20 @@ public class CardHand : MonoBehaviour
     {
         allCardsInHand.Add(cardHUD);
         yield return UpdateCardsPosition(0.15f);
+    }
+
+    public CardHUD RemoveCard(Card card)
+    {
+        CardHUD cardHUD = GetCardHUD(card);
+        if (cardHUD == null) return null;
+        allCardsInHand.Remove(cardHUD);
+        StartCoroutine(UpdateCardsPosition(0.15f));
+        return cardHUD;
+    }
+
+    private CardHUD GetCardHUD(Card card)
+    {
+        return allCardsInHand.Where(cardHUD => cardHUD.Card == card).FirstOrDefault();
     }
 
     private IEnumerator UpdateCardsPosition(float duration)

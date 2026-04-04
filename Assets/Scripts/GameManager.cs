@@ -14,31 +14,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _playerDatas = ScriptableObject.CreateInstance<PlayerDatas>();
+        //_playerDatas = ScriptableObject.CreateInstance<PlayerDatas>();
 
         _gameDataManager = new GameDataManager();
+        _playerDatas._data._health = 20;
+        _playerDatas._data._cellNumber = 0;
+        _playerDatas._data._attack = 3;
+        //SaveGame();
+        //LoadGame();
 
-        SaveGame();
-        LoadGame();
-
-        _playerPawnRef.LateStart(_playerDatas);
-        _playerHUDRef.LateStart(_playerDatas);
+        //_playerPawnRef.LateStart(_playerDatas);
+        //_playerHUDRef.LateStart(_playerDatas);
     }
 
     public void RestartLevel()
     {
         _playerDatas._data._health = 20;
         _playerDatas._data._cellNumber = 0;
-        SaveGame();
-        LoadGame();
+        //SaveGame();
+        //LoadGame();
         SceneManager.LoadScene("LoopHeroLvl1_Map");
     }
 
     public void NextLevel()
     {
         _playerDatas._data._cellNumber = 0;
-        SaveGame();
-        LoadGame();
+        //SaveGame();
+        //LoadGame();
         SceneManager.LoadScene("LoopHeroLvl2_Map");
 
     }

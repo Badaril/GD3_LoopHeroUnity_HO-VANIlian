@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff5f440af192f34eb88d08fba0dbe0a, type: 3}
+  m_Name: RoiDialogue
+  m_EditorClassIdentifier: 
+  _rows:
+  - _characterName: Roi
+    _dialogueLong: "Bonjour, j'ai besoin que tu me r\xE9cup\xE8re la bague de ma
+      femme qui a \xE9t\xE9 vol\xE9e par des goblins."
+    _nextRowNumber: 1
+    _nextRowByCondition: -1
+    _isDialogueFinished: 0
+  - _characterName: Roi
+    _dialogueLong: "Ils se sont enfuis dans le labyrinthe du chateau. Pour pouvoir
+      rentrer, tu dois gagner un duel de cartes contre le goblin qui garde l'entr\xE9e."
+    _nextRowNumber: 2
+    _nextRowByCondition: -1
+    _isDialogueFinished: 0
+  - _characterName: Roi
+    _dialogueLong: "Si tu r\xE9ussis, je te r\xE9compenserais avec une bourse de
+      pi\xE8ces d'or bien remplie."
+    _nextRowNumber: 2
+    _nextRowByCondition: -1
+    _isDialogueFinished: 0
+  - _characterName: Joueur
+    _dialogueLong: D'accord, je vais le faire.
+    _nextRowNumber: 3
+    _nextRowByCondition: -1
+    _isDialogueFinished: 1
+  - _characterName: Roi
+    _dialogueLong: Mais il te manque la bague. Reviens me voir quand tu l'auras,
+      sinon pas d'argent.
+    _nextRowNumber: 3
+    _nextRowByCondition: 4
+    _isDialogueFinished: 1
+  - _characterName: Roi
+    _dialogueLong: "Merci beaucoup ! Tu n'as plus rien \xE0 voir ici, tu peux partir
+      et n'en parle surtout \xE0 personne de cette histoire."
+    _nextRowNumber: 4
+    _nextRowByCondition: 4
+    _isDialogueFinished: 1

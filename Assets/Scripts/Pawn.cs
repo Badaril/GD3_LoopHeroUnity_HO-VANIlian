@@ -3,9 +3,19 @@ using UnityEngine;
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private Board _board;
-    /*[SerializeField]*/ private PlayerDatas _playerDatas;
+    [SerializeField] private PlayerDatas _playerDatas;
     [SerializeField] private UIPlayerDatasController _playerDatasController;
     private DamageComponent _damageComponent;
+
+    public void Start()
+    {
+        
+        _damageComponent = this.GetComponent<DamageComponent>();
+        
+        //_damageComponent._playerPawn = this;
+        MoveToCell();
+        ActivateCell();
+    }
 
     public void LateStart(PlayerDatas playerdatas)
     {

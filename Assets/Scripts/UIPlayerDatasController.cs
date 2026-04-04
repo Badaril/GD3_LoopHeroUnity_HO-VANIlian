@@ -19,9 +19,16 @@ public class UIPlayerDatasController : MonoBehaviour
     [SerializeField] private GameObject _DeathHUD;
     [SerializeField] private GameObject _nextLevelHUD;
 
-    /*[SerializeField]*/ private PlayerDatas _playerDatas;
+    [SerializeField] private PlayerDatas _playerDatas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void Start()
+    {
+        
+        UpdateHealth(true, _playerDatas._data._health);
+    }
+
+
     public void LateStart(PlayerDatas playerdatas)
     {
         _playerDatas = playerdatas;
