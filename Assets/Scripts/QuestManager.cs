@@ -3,7 +3,6 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public bool _isQuestFinished;
-
     private int _monstersKilled;
 
     public void UpdateQuestState()

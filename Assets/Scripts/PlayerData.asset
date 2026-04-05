@@ -18,5 +18,6 @@ MonoBehaviour:
     _attack: 3
     _attackCooldown: 0
     _stamina: 0
+    _money: 100
     _isInMiniGame: 0
     _miniGameNumber: 0

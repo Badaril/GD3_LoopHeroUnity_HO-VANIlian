@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIPlayerDatasController _playerHUDRef;
     //private PlayerData _playerData;
     private GameDataManager _gameDataManager;
+    private int levelNumber = 1;
 
     private void Start()
     {
@@ -20,11 +21,13 @@ public class GameManager : MonoBehaviour
         _playerDatas._data._health = 20;
         _playerDatas._data._cellNumber = 0;
         _playerDatas._data._attack = 3;
+        _playerDatas._data._money = 100;
+        levelNumber = 2;
         //SaveGame();
         //LoadGame();
 
-        //_playerPawnRef.LateStart(_playerDatas);
-        //_playerHUDRef.LateStart(_playerDatas);
+        _playerPawnRef.LateStart(_playerDatas);
+        _playerHUDRef.LateStart(_playerDatas);
     }
 
     public void RestartLevel()
@@ -33,12 +36,14 @@ public class GameManager : MonoBehaviour
         _playerDatas._data._cellNumber = 0;
         //SaveGame();
         //LoadGame();
-        SceneManager.LoadScene("LoopHeroLvl1_Map");
+        SceneManager.LoadScene("LoopHeroLvl" + levelNumber + "_Map");
+        
     }
 
     public void NextLevel()
     {
         _playerDatas._data._cellNumber = 0;
+        levelNumber++;
         //SaveGame();
         //LoadGame();
         SceneManager.LoadScene("LoopHeroLvl2_Map");
@@ -57,6 +62,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(_playerDatas._data._cellNumber + "cellNumber");
+        //Debug.Log(SceneManager.GetActiveScene().ToString());
     }
 }

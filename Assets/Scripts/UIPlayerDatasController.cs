@@ -1,12 +1,17 @@
+using System.Collections;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UIPlayerDatasController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private Image _fillImageHealth;
+    [SerializeField] private GameObject _healthBlockHUD;
+
+    [SerializeField] private TMP_Text _moneyText;
 
     [SerializeField] private TMP_Text _staminaText;
     [SerializeField] private Image _fillStamina;
@@ -19,6 +24,9 @@ public class UIPlayerDatasController : MonoBehaviour
     [SerializeField] private GameObject _DeathHUD;
     [SerializeField] private GameObject _nextLevelHUD;
 
+    [SerializeField] private GameObject _duelResultHUD;
+    [SerializeField] private TMP_Text _duelTextResult;
+ 
     [SerializeField] private PlayerDatas _playerDatas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +34,7 @@ public class UIPlayerDatasController : MonoBehaviour
     {
         
         UpdateHealth(true, _playerDatas._data._health);
+        UpdateMoneyHUD();
     }
 
 
@@ -33,6 +42,7 @@ public class UIPlayerDatasController : MonoBehaviour
     {
         _playerDatas = playerdatas;
         UpdateHealth(true, _playerDatas._data._health);
+        UpdateMoneyHUD();
     }
 
     public void UpdateHealth(bool isPlayer, float value)
@@ -57,12 +67,16 @@ public class UIPlayerDatasController : MonoBehaviour
     public void SetDuelHUD(bool active)
     {
         _diceBox.SetActive(!active);
-        //remove health bar
+        _healthBlockHUD.SetActive(!active);
     }
 
-    public void DisplayDuelResult(bool playerHasWin)
+    public IEnumerator DisplayDuelResult(string text)
     {
-        //1 hud and change text in function of bool
+        yield return new WaitForSeconds(0.2f);
+        _duelTextResult.text = text;
+        _duelResultHUD.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+        _duelResultHUD.SetActive(false);
     }
 
     public void UpdateStamina(float value)
@@ -80,5 +94,20 @@ public class UIPlayerDatasController : MonoBehaviour
     {
         _nextLevelHUD.SetActive(true);
         _playerDatas._data._attack += 2;
+    }
+
+    public void UpdateMoney(int gain)
+    {
+        _playerDatas._data._money += gain;
+        UpdateMoneyHUD();
+        if (_playerDatas._data._money <= 0)
+        {
+            //cannot duel
+        }
+    }
+
+    private void UpdateMoneyHUD()
+    {
+        _moneyText.text = "Money : " + _playerDatas._data._money.ToString();
     }
 }

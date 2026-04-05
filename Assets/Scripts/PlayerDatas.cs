@@ -10,6 +10,8 @@ public struct PlayerData
     public float _attackCooldown;
     public float _stamina;
 
+    public int _money;
+
     public bool _isInMiniGame;
     public int _miniGameNumber;
 }

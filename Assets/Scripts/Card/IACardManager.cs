@@ -3,13 +3,7 @@ using UnityEngine;
 
 public class IACardManager : MonoBehaviour
 {
-    [SerializeField] private HandCreator handCreator;
-    [SerializeField] private CardHand hand;
-
-    [SerializeField] private CardDatas esquiveData;
-    [SerializeField] private CardDatas panData;
-    [SerializeField] private CardDatas attenteData;
-
+    [SerializeField] public CardHand hand;
     [SerializeField] private GameObject cardDropAreaForIA;
 
     public int indexOfCardPlay = -1;

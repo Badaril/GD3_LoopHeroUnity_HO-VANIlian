@@ -50,4 +50,25 @@ public class HandCreator : Singleton<HandCreator>
         StartCoroutine(hand.AddCard(newCard));
         //StartCoroutine(IAHand.AddCard(newCard));
     }
+
+    public void CreateAllHAnds()
+    {
+        CreateHand(panData, playerCardHand);
+
+        CreateHand(esquiveData, playerCardHand);
+        CreateHand(esquiveData, playerCardHand);
+
+        CreateHand(attenteData, playerCardHand);
+        CreateHand(attenteData, playerCardHand);
+        CreateHand(attenteData, playerCardHand);
+
+        CreateHand(panData, IAHand);
+
+        CreateHand(esquiveData, IAHand);
+        CreateHand(esquiveData, IAHand);
+
+        CreateHand(attenteData, IAHand);
+        CreateHand(attenteData, IAHand);
+        CreateHand(attenteData, IAHand);
+    }
 }
