@@ -15,20 +15,23 @@ un jeu Unreal contenant L'AUTRE mini-jeu.
 des readme expliquant clairement le fonctionnement de vos jeux (one page doc)
 
 # Notes d'intention  
-Dans ce deuxième niveau, le joueur doit récupérer la bague du roi, volée par des monstres qui se sont réfugiés dans un labyrinthe. Un garde l'entrée et le deuxième surveille l'intérieur.  
+Dans ce deuxième niveau, le joueur doit récupérer la bague du roi, volée par des monstres qui se sont réfugiés dans un labyrinthe. Un garde l'entrée et le deuxième surveille l'intérieur. S'il y réussit, il gagnera 200 pièces d'or qu'il pourra utiliser plus tard.  
 Les deux mini-jeux sont :  
 - un duel de cartes
 - un parcours de labyrinthe avec un garde qui patrouille dedans.
 
-Sur ce moteur de jeu, j'ai codé le duel de cartes. Le duel se lance quand le joueur tombe sur la case Duel. Cette case se trouve à l'entrée du labyrinthe. Il faut donc gagner son duel pour débloquer le passage pour pouvoir ensuite rentrer dans le labyrinthe.  
+Sur ce moteur de jeu, j'ai codé le duel de cartes. Le duel se lance quand le joueur tombe sur la case Duel. Cette case se trouve à l'entrée du labyrinthe. Il faut donc gagner son duel pour débloquer le passage pour pouvoir ensuite rentrer dans le labyrinthe. Pour l'instant, il y a juste le mini jeu qui fonctionne, le joueur ne peut pas se déplacer sur le passage du labyrinthe s'il parvient à le débloquer. 
 
 Le joueur et son adversaire IA possède une main de six cartes : une carte "PAN", deux cartes "ESQUIVE" et trois cartes "ATTENTE". Chaque joueur choisit une carte de sa main et la pose face caché. On retourne ensuite les cartes :  
 
-- S'il y a 1 carte "PAN" contre 1 carte "ATTENTE", le joueur qui a posé la carte "PAN" gagne et met fin au duel.
-- S'il y a 2 cartes "PAN", les joueurs s'entretuent et le duel fini en match nul.
-- Dans toutes les autres configurations, le duel continue et les joueurs défaussent la carte qui viennent de jouer.  
+- Le joueur **gagne** s'il pose 1 carte "PAN" contre 1 carte "ATTENTE" et met fin au duel.
+- Le joueur **perd** si :
+    - s'il y a 2 cartes "PAN"
+    - s'il pose 1 carte "ATTENTE" contre 1 carte "PAN"
+    - s'il ne possède plus de cartes
+- **Dans toutes les autres configurations**, le duel continue et les joueurs défaussent la carte qui viennent de jouer.  
 
-Une fois l'adversaire IA battu, le joueur peut accéder librement au labyrinthe.
+Une fois l'adversaire IA battu, le joueur libère le passage vers le labyrinthe. Sinon, le joueur perd de l'argent et deva retenter sa chance en retombant sur la case.
 
 # Devoir 12/01 : Loop Hero V1
 
