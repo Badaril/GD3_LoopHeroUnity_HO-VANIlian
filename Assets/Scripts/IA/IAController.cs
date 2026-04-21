@@ -11,28 +11,47 @@ public enum StateType
 
 public class IAController : MonoBehaviour
 {
-
     [SerializeField] private StateType state = StateType.None;
     [SerializeField] private StateType newState = StateType.None;
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject navPoint;
+    [SerializeField] private float patrolRadius = 100f;
+    [SerializeField] private float arrivalDistance = 0.5f;
+
+    private NavMeshAgent _agent;
+    private Animator _animator;
+    private SightPerception _sight;
+    private bool _isWaiting;
+    private float timer;
+
+    private void Start()
+    {
+        // Cache des composants pour éviter les GetComponent répétés
+        _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
+        _sight = GetComponent<SightPerception>();
+
+        SetNewRandomDestination();
+    }
 
     private void Update()
     {
-        GetComponent<Animator>().SetFloat("Speed", GetComponent<NavMeshAgent>().velocity.magnitude);
-        //Debug.Log(GetComponent<Animator>().GetFloat("Speed"));
+        _animator.SetFloat("Speed", _agent.velocity.magnitude);
+
         if (TestChangeState())
         {
             ChangeState();
         }
         Behaviour();
+
+        Debug.Log(_isWaiting);
+        Debug.Log(timer);
     }
 
     private void Behaviour()
     {
         switch (state)
         {
-            // faire en sorte qu'il se déplac random dans une zone
             case StateType.Patrol:
                 PatrolBehaviour();
                 break;
@@ -52,20 +71,18 @@ public class IAController : MonoBehaviour
         switch (state)
         {
             case StateType.Follow:
-                //GetComponent<Animator>().SetTrigger("Taunting");
-                //à mettre dans un scriptable object
-                GetComponent<NavMeshAgent>().speed = 3.5f;
+                _agent.speed = 3.5f;
                 break;
 
             case StateType.Patrol:
-                GetComponent<NavMeshAgent>().stoppingDistance = 0.5f;
-                //à mettre dans un scriptable object
-                GetComponent<NavMeshAgent>().speed = 2f;
+                _agent.stoppingDistance = arrivalDistance;
+                _agent.speed = 3.5f;
+                SetNewRandomDestination(); // Nouveau point dès qu'on entre en Patrol
                 break;
 
             case StateType.Attack:
-                GetComponent<Animator>().SetBool("Attack", true);
-                GetComponent<NavMeshAgent>().stoppingDistance = GetComponent<Animator>().GetFloat("AttackRange");
+                _animator.SetBool("Attack", true);
+                _agent.stoppingDistance = _animator.GetFloat("AttackRange");
                 break;
         }
     }
@@ -75,18 +92,19 @@ public class IAController : MonoBehaviour
         switch (state)
         {
             case StateType.Follow:
-                GetComponent<NavMeshAgent>().SetDestination(transform.position);
-                GetComponent<NavMeshAgent>().stoppingDistance = GetComponent<Animator>().GetFloat("AttackRange");
-                GetComponent<NavMeshAgent>().speed = 0f;
+                _agent.SetDestination(transform.position);
+                _agent.stoppingDistance = _animator.GetFloat("AttackRange");
+                _agent.speed = 0f;
                 break;
-            
+
             case StateType.Patrol:
-                GetComponent<NavMeshAgent>().SetDestination(transform.position);
-                GetComponent<NavMeshAgent>().speed = 0f;
+                _isWaiting = true;
+                _agent.SetDestination(transform.position);
+                _agent.speed = 0f;
                 break;
 
             case StateType.Attack:
-                GetComponent<Animator>().SetBool("Attack", false);
+                _animator.SetBool("Attack", false);
                 break;
         }
     }
@@ -103,27 +121,25 @@ public class IAController : MonoBehaviour
         switch (state)
         {
             case StateType.Follow:
-                if (!GetComponent<SightPerception>().isDetected)
+                if (!_sight.isDetected)
                 {
                     newState = StateType.Patrol;
                     return true;
                 }
-
-                if (Vector3.Distance(target.transform.position, transform.position) <= GetComponent<Animator>().GetFloat("AttackRange"))
+                if (Vector3.Distance(target.transform.position, transform.position) <= _animator.GetFloat("AttackRange"))
                 {
-                    newState = StateType.Attack; 
+                    newState = StateType.Attack;
                     return true;
                 }
                 break;
 
             case StateType.Patrol:
-                if (GetComponent<SightPerception>().isDetected)
+                if (_sight.isDetected)
                 {
                     newState = StateType.Follow;
                     return true;
                 }
-
-                if (Vector3.Distance(target.transform.position, transform.position) <= GetComponent<Animator>().GetFloat("AttackRange"))
+                if (Vector3.Distance(target.transform.position, transform.position) <= _animator.GetFloat("AttackRange"))
                 {
                     newState = StateType.Attack;
                     return true;
@@ -131,13 +147,12 @@ public class IAController : MonoBehaviour
                 break;
 
             case StateType.Attack:
-                if (!GetComponent<SightPerception>().isDetected)
+                if (!_sight.isDetected)
                 {
                     newState = StateType.Patrol;
                     return true;
                 }
-
-                if (Vector3.Distance(target.transform.position, transform.position) > GetComponent<Animator>().GetFloat("AttackRange"))
+                if (Vector3.Distance(target.transform.position, transform.position) > _animator.GetFloat("AttackRange"))
                 {
                     newState = StateType.Follow;
                     return true;
@@ -149,15 +164,57 @@ public class IAController : MonoBehaviour
 
     private void PatrolBehaviour()
     {
-        GetComponent<NavMeshAgent>().SetDestination(navPoint.transform.position);
-        //GetComponent<Animator>().SetTrigger("Stretching");
+        if (!_agent.pathPending && _agent.remainingDistance <= arrivalDistance)
+        {
+            if (!_isWaiting)
+            {
+                // Vient d'arriver : démarre l'attente
+                _isWaiting = true;
+                timer = 0f;
+                _agent.speed = 0f;
+            }
+            else
+            {
+                // Décompte
+                timer += Time.deltaTime; //  additionne
+                if (timer >= 0.5f)
+                {
+                    _isWaiting = false;
+                    timer = 0f;
+                    _agent.speed = 3.5f;
+                    SetNewRandomDestination();
+                }
+            }
+        }
     }
+
+
     private void FollowBehaviour()
     {
-        GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
+        _agent.SetDestination(target.transform.position);
     }
+
     private void AttackBehaviour()
     {
-        GetComponent<Animator>().SetTrigger("Kick");
+        _animator.SetTrigger("Kick");
+    }
+
+    private void SetNewRandomDestination()
+    {
+        Vector3 randomPoint = GetRandomNavMeshPoint();
+        _agent.SetDestination(randomPoint);
+    }
+
+    private Vector3 GetRandomNavMeshPoint()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * patrolRadius;
+        randomDirection += transform.position;
+
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, patrolRadius, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+
+        return transform.position;
     }
 }
