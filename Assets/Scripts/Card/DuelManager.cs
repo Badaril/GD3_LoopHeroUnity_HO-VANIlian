@@ -19,7 +19,7 @@ public class DuelManager : MonoBehaviour, IActivable
     [SerializeField] private CardHand playerHand;
     [SerializeField] private Transform discardPilePoint;
 
-    [SerializeField] private GameObject labyrinthePath;
+    [SerializeField] private GameObject boardRef;
 
     private bool duelActive = true;
 
@@ -62,7 +62,7 @@ public class DuelManager : MonoBehaviour, IActivable
             duelActive = false;
             StartCoroutine(_playerHUD.DisplayDuelResult("You win !"));
             yield return new WaitForSeconds(0.5f);
-            labyrinthePath.SetActive(true);
+            boardRef.GetComponent<Board>().OpenMazePath();
             EndDuel();
         }
 
