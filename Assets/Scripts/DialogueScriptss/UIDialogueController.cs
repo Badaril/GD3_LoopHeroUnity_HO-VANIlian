@@ -60,7 +60,14 @@ public class UIDialogueController : MonoBehaviour
         _diceBox.gameObject.SetActive(true);
         if (_questManager._isQuestFinished)
         {
-            _uIPlayerDatasController.DisplayNextLevelHUD();
+            if (_characterName.text == "Fermier")
+            {
+                _uIPlayerDatasController.DisplayNextLevelHUD(1);
+            }
+            else
+            {
+                _uIPlayerDatasController.DisplayNextLevelHUD(2);
+            }
         }
     }
 }

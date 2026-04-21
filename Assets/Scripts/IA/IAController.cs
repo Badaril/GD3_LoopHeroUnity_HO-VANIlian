@@ -15,12 +15,15 @@ public class IAController : MonoBehaviour
     [SerializeField] private StateType newState = StateType.None;
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject navPoint;
-    [SerializeField] private float patrolRadius = 100f;
-    [SerializeField] private float arrivalDistance = 0.5f;
+    [SerializeField] private LabyrinthManager labyrinthManager;
+
+    private float patrolRadius = 100f;
+    private float arrivalDistance = 0.5f;
 
     private NavMeshAgent _agent;
     private Animator _animator;
     private SightPerception _sight;
+
     private bool _isWaiting;
     private float timer;
 
@@ -197,6 +200,7 @@ public class IAController : MonoBehaviour
     private void AttackBehaviour()
     {
         _animator.SetTrigger("Kick");
+        labyrinthManager.EndRunInLabyrinth(true);
     }
 
     private void SetNewRandomDestination()

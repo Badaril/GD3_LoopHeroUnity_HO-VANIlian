@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         levelNumber++;
         //SaveGame();
         //LoadGame();
-        SceneManager.LoadScene("LoopHeroLvl2_Map");
+        SceneManager.LoadScene("LoopHeroLvl" + levelNumber + "_Map");
 
     }
 

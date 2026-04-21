@@ -90,10 +90,17 @@ public class UIPlayerDatasController : MonoBehaviour
         _DeathHUD.SetActive(true);
     }
 
-    public void DisplayNextLevelHUD()
+    public void DisplayNextLevelHUD(int level)
     {
         _nextLevelHUD.SetActive(true);
-        _playerDatas._data._attack += 2;
+        if (level == 1)
+        {
+            _playerDatas._data._attack += 2;
+        }
+        else if (level == 2)
+        {
+            UpdateMoney(200);
+        }
     }
 
     public void UpdateMoney(int gain)
