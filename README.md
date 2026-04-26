@@ -1,4 +1,42 @@
 # GD3_LoopHeroUnity_HO-VANIlian
+# Devoir 27/04 : Loop Hero V3
+
+# Consigne
+L'objectif ici est de disposer de deux jeux basés sur les loop hero déjà réalisés avec pour chacun d'entre eux au moins deux mini jeux déclenchés en arrivant sur une case spécifique, ou plusieurs cases si cela correspond au jeu prévu.
+
+Les mini jeux seront :
+- un jeu de type cache cache avec un personnage animé qui patrouille et poursuit le joueur jusqu'à l'attraper. Son comportement pourra être plus complexe dans le cadre d'un bonus.
+- un autre mini jeu de votre choix, ou les conditions de victoire et de défaite seront clairement visibles. Un personnage animé n'est pas obligatoire.
+Les deux mini-jeux devront influencer le jeu principal, par une récupération de ressources, de points ou d'objets.
+
+Attentes de rendu pour ce devoir :
+un jeu unity contenant les deux mini jeux
+un jeu Unreal contenant les deux mêmes mini-jeux.
+des readme expliquant clairement le fonctionnement de vos jeux (one page doc)
+
+# Notes d'intention  
+Dans ce deuxième niveau, le joueur doit récupérer la bague du roi, volée par des monstres qui se sont réfugiés dans un labyrinthe. Un garde l'entrée et le deuxième surveille l'intérieur. S'il y réussit, il gagnera 200 pièces d'or qu'il pourra utiliser plus tard.  
+Les deux mini-jeux sont :  
+- un duel de cartes
+- un parcours de labyrinthe avec un garde qui patrouille dedans.
+
+*REGLES DU MINI JEU : DUEL*  
+Le duel se lance quand le joueur tombe sur la case Duel. Cette case se trouve à l'entrée du labyrinthe. Il faut donc gagner son duel pour débloquer le passage pour pouvoir ensuite rentrer dans le labyrinthe. Pour l'instant, il y a juste le mini jeu qui fonctionne, le joueur ne peut pas se déplacer sur le passage du labyrinthe s'il parvient à le débloquer. 
+
+Le joueur et son adversaire IA possède une main de six cartes : une carte "PAN", deux cartes "ESQUIVE" et trois cartes "ATTENTE". Chaque joueur choisit une carte de sa main et la pose face caché. On retourne ensuite les cartes :  
+
+- Le joueur **gagne** s'il pose 1 carte "PAN" contre 1 carte "ATTENTE" et met fin au duel.
+- Le joueur **perd** si :
+    - s'il y a 2 cartes "PAN"
+    - s'il pose 1 carte "ATTENTE" contre 1 carte "PAN"
+    - s'il ne possède plus de cartes
+- **Dans toutes les autres configurations**, le duel continue et les joueurs défaussent la carte qui viennent de jouer.  
+
+Une fois l'adversaire IA battu, le joueur libère le passage vers le labyrinthe. Sinon, le joueur perd de l'argent et deva retenter sa chance en retombant sur la case.  
+
+*REGLES DU MINI JEU : LABYRINTHE*  
+Le joueur apparait dans un coin du labyrinthe. Son objectif est de trouver la bague, de la récupérer et de retourner au point de départ pour s'enfuir avec. S'il se fait repérer par le patrouilleur, le monstre le poursuit. S'il est assez proche, le monstre vire le joueur du labyrinthe et le joueur doit refaire un tour de plateau pour retenter sa chance. Les zones violettes à l'intérieur du labyrinthe sont des zones safes dans lesquelles l'ennemi ne peut pas accéder.
+
 # Devoir 07/04 : Loop Hero V2
 
 # Consigne
