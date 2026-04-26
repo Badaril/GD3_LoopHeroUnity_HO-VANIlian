@@ -27,8 +27,8 @@ public class DuelManager : MonoBehaviour, IActivable
     {
         if (duelActive)
         {
-            StartCoroutine(DiscardAllCards_V2(playerHand));
-            StartCoroutine(DiscardAllCards_V2(IACardManager.hand));
+            StartCoroutine(DiscardAllCards(playerHand));
+            StartCoroutine(DiscardAllCards(IACardManager.hand));
             _handCreator.CreateAllHAnds();
             _playerCamera.gameObject.SetActive(false);
             _duelCamera.gameObject.SetActive(true);
@@ -102,8 +102,8 @@ public class DuelManager : MonoBehaviour, IActivable
 
     public void EndDuel()
     {
-        StartCoroutine(DiscardAllCards_V2(playerHand));
-        StartCoroutine(DiscardAllCards_V2(IACardManager.hand));
+        StartCoroutine(DiscardAllCards(playerHand));
+        StartCoroutine(DiscardAllCards(IACardManager.hand));
         //playerHand.allCardsInHand.Clear();
         //IACardManager.hand.allCardsInHand.Clear();
         _duelCamera.gameObject.SetActive(false);
@@ -118,7 +118,7 @@ public class DuelManager : MonoBehaviour, IActivable
         StartCoroutine(UpdateDuel(playerCard));
     }
 
-    private IEnumerator DiscardAllCards(CardHand hand)
+    /*private IEnumerator DiscardAllCards(CardHand hand)
     {
         List<CardHUD> test = new List<CardHUD>(hand.allCardsInHand);
 
@@ -130,9 +130,9 @@ public class DuelManager : MonoBehaviour, IActivable
             yield return DiscardCard(card);
         }
         hand.allCardsInHand.Clear();
-    }
+    }*/
 
-    private IEnumerator DiscardAllCards_V2(CardHand hand)
+    private IEnumerator DiscardAllCards(CardHand hand)
     {
        for (int i = hand.allCardsInHand.Count - 1; i >= 0; i--)
        {
