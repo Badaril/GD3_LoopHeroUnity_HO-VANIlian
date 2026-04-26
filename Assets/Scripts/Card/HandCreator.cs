@@ -21,7 +21,7 @@ public class HandCreator : Singleton<HandCreator>
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        /*if (Input.GetKeyUp(KeyCode.Space))
         {
             CreateHand(panData, playerCardHand);
 
@@ -40,7 +40,7 @@ public class HandCreator : Singleton<HandCreator>
             CreateHand(attenteData, IAHand);
             CreateHand(attenteData, IAHand);
             CreateHand(attenteData, IAHand);
-        }
+        }*/
     }
 
     public void CreateHand(CardDatas type, CardHand hand)
@@ -51,7 +51,7 @@ public class HandCreator : Singleton<HandCreator>
         //StartCoroutine(IAHand.AddCard(newCard));
     }
 
-    public void CreateAllHAnds()
+    public void CreateAllHands()
     {
         CreateHand(panData, playerCardHand);
 

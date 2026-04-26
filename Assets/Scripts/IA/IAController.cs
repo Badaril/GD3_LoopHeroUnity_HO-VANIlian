@@ -29,7 +29,6 @@ public class IAController : MonoBehaviour
 
     private void Start()
     {
-        // Cache des composants pour éviter les GetComponent répétés
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _sight = GetComponent<SightPerception>();
@@ -47,8 +46,8 @@ public class IAController : MonoBehaviour
         }
         Behaviour();
 
-        Debug.Log(_isWaiting);
-        Debug.Log(timer);
+        /*Debug.Log(_isWaiting);
+        Debug.Log(timer);*/
     }
 
     private void Behaviour()
@@ -80,7 +79,7 @@ public class IAController : MonoBehaviour
             case StateType.Patrol:
                 _agent.stoppingDistance = arrivalDistance;
                 _agent.speed = 3.5f;
-                SetNewRandomDestination(); // Nouveau point dès qu'on entre en Patrol
+                SetNewRandomDestination(); 
                 break;
 
             case StateType.Attack:
@@ -171,15 +170,13 @@ public class IAController : MonoBehaviour
         {
             if (!_isWaiting)
             {
-                // Vient d'arriver : démarre l'attente
                 _isWaiting = true;
                 timer = 0f;
                 _agent.speed = 0f;
             }
             else
             {
-                // Décompte
-                timer += Time.deltaTime; //  additionne
+                timer += Time.deltaTime;
                 if (timer >= 0.5f)
                 {
                     _isWaiting = false;

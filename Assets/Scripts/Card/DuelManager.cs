@@ -29,7 +29,7 @@ public class DuelManager : MonoBehaviour, IActivable
         {
             StartCoroutine(DiscardAllCards(playerHand));
             StartCoroutine(DiscardAllCards(IACardManager.hand));
-            _handCreator.CreateAllHAnds();
+            _handCreator.CreateAllHands();
             _playerCamera.gameObject.SetActive(false);
             _duelCamera.gameObject.SetActive(true);
             _playerHUD.SetDuelHUD(true);

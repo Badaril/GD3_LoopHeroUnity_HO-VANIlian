@@ -39,7 +39,7 @@ public class IACardManager : MonoBehaviour
         return hand.allCardsInHand[indexOfCardPlay];
     }
 
-    public CardHand GetIAHand()
+    /*public CardHand GetIAHand()
     {
         return hand;
     }
@@ -54,9 +54,9 @@ public class IACardManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.KeypadEnter))
+        /*if (Input.GetKeyUp(KeyCode.KeypadEnter))
         {
             PlayCard();
         }
-    }
+    }*/
 }
