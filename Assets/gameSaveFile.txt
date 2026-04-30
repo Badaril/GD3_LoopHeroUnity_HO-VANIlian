@@ -1,1 +1,1 @@
-{"_cellNumber":0,"_health":20.0,"_attack":3.0,"_attackCooldown":0.0,"_stamina":0.0,"_isInMiniGame":false,"_miniGameNumber":0}
+{"_cellNumber":9,"_health":17.0,"_attack":5.0,"_attackCooldown":0.0,"_stamina":0.0,"_money":100,"_isInMiniGame":false,"_miniGameNumber":0}

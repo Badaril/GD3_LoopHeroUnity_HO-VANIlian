@@ -7,7 +7,7 @@ public class Pawn : MonoBehaviour
     [SerializeField] private UIPlayerDatasController _playerDatasController;
     private DamageComponent _damageComponent;
 
-    public void Start()
+    /*public void Start()
     {
         
         _damageComponent = this.GetComponent<DamageComponent>();
@@ -15,7 +15,7 @@ public class Pawn : MonoBehaviour
         //_damageComponent._playerPawn = this;
         MoveToCell();
         ActivateCell();
-    }
+    }*/
 
     public void LateStart(PlayerDatas playerdatas)
     {
@@ -26,6 +26,8 @@ public class Pawn : MonoBehaviour
         MoveToCell();
         ActivateCell();
     }
+
+    public PlayerDatas GetPlayerDatas() { return _playerDatas; }
 
     private void MoveToCell ()
     {

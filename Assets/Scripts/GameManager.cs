@@ -15,16 +15,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //_playerDatas = ScriptableObject.CreateInstance<PlayerDatas>();
+        _playerDatas = ScriptableObject.CreateInstance<PlayerDatas>();
 
         _gameDataManager = new GameDataManager();
-        _playerDatas._data._health = 20;
+        /*_playerDatas._data._health = 20;
         _playerDatas._data._cellNumber = 0;
         _playerDatas._data._attack = 3;
         _playerDatas._data._money = 100;
         levelNumber = 2;
-        //SaveGame();
-        //LoadGame();
+
+        SaveGame();*/
+        LoadGame();
 
         _playerPawnRef.LateStart(_playerDatas);
         _playerHUDRef.LateStart(_playerDatas);
@@ -34,8 +35,8 @@ public class GameManager : MonoBehaviour
     {
         _playerDatas._data._health = 20;
         _playerDatas._data._cellNumber = 0;
-        //SaveGame();
-        //LoadGame();
+        SaveGame();
+        LoadGame();
         SceneManager.LoadScene("LoopHeroLvl" + levelNumber + "_Map");
         
     }
@@ -44,8 +45,9 @@ public class GameManager : MonoBehaviour
     {
         _playerDatas._data._cellNumber = 0;
         levelNumber++;
-        //SaveGame();
-        //LoadGame();
+        Mathf.Clamp(levelNumber, 1, 3);
+        SaveGame();
+        LoadGame();
         SceneManager.LoadScene("LoopHeroLvl" + levelNumber + "_Map");
 
     }
@@ -63,5 +65,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Debug.Log(SceneManager.GetActiveScene().ToString());
+    }
+
+    private void OnDestroy()
+    {
+        SaveGame();
     }
 }

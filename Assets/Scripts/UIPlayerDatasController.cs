@@ -29,13 +29,12 @@ public class UIPlayerDatasController : MonoBehaviour
  
     [SerializeField] private PlayerDatas _playerDatas;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Start()
+    /*public void Start()
     {
         
         UpdateHealth(true, _playerDatas._data._health);
         UpdateMoneyHUD();
-    }
+    }*/
 
 
     public void LateStart(PlayerDatas playerdatas)
